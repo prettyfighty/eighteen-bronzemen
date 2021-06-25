@@ -1,12 +1,14 @@
 # 5xRuby - Training Program
 
-# Ruby Version: 2.7.2
+## Version:
 
-# Rails Version: 6.1.3.2
+- Ruby: 2.7.2
+- Rails: 6.1.3.2
 
-# Table Schema
+## Table Schema
 
 - Model: User
+
 | Column | Type | Explanation |
 | ------ | ---- | ----------- |
 | email | string | 帳號 |
@@ -14,6 +16,7 @@
 | role | string | 角色 |
 
 - Model: Mission
+
 | Column | Type | Explanation |
 | ------ | ---- | ----------- |
 | title | string | 標題 |
