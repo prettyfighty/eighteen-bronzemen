@@ -1,24 +1,27 @@
-# README
+# 5xRuby - Training Program
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Ruby Version: 2.7.2
 
-Things you may want to cover:
+# Rails Version: 6.1.3.2
 
-* Ruby version
+# Table Schema
 
-* System dependencies
+- Model: User
+| Column | Type | Explanation |
+| ------ | ---- | ----------- |
+| email | string | 帳號 |
+| password | string | 密碼 |
+| role | string | 角色 |
 
-* Configuration
+- Model: Mission
+| Column | Type | Explanation |
+| ------ | ---- | ----------- |
+| title | string | 標題 |
+| content | string | 內容 |
+| tag | string | 標籤 |
+| status | string | 狀態 |
+| priority | integer | 優先順序 |
+| start_at | datetime | 開始時間 |
+| end_at | datetime | 結束時間 |
 
-* Database creation
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
