@@ -1,0 +1,10 @@
+<%= simple_form_for(mission) do |f| %>
+  <%= f.input :title, label: "標題" %>
+  <%= f.input :content, label: "內容" %>
+  <%= f.input :tag, label: "標籤" %>
+  <%= f.input :status, label: "狀態", collection: ["待處理", "進行中", "已完成"] %>
+  <%= f.input :priority, label: "優先順序", collection: Mission.priorities %>
+  <%= f.input :start_at, label: "開始時間" %>
+  <%= f.input :end_at, label: "結束時間" %>
+  <%= f.button :submit %>
+<% end %>
