@@ -28,14 +28,40 @@
 #
 # To learn more, please read the Rails Internationalization guide
 # available at https://guides.rubyonrails.org/i18n.html.
-
-
-
+en:
+  back_to_mission_list: Back to Mission List
+  mission_list: Mission List
+  new_mission: Create Mission
+  edit_mission: Edit Mission
+  author: Author
+  title: Title
+  tag: Tag
+  start_at: Start From
+  end_at: End At
+  status: Status
+  priority: Priority
+  edit: Edit
+  delete: Delete
+  confirm_delete: Are you sure?
+  content: Content
+  successfully_create_mission: Mission Created Successfully
+  successfully_update_mission: Mission Edited Successfully
+  successfully_delete_mission: Mission Deleted
+  cannot_find_mission: Cannot Find Any Mission
+  enums:
+    mission:
+      priority:
+        high: High
+        medium: Medium
+        low: Low
+      status:
+        pending: Pending
+        in_progress: In Progress
+        done: Done
 
 
 
 # --- #  rails-i18n https://github.com/svenfuchs/rails-i18n/tree/master/rails/locale/
-en:
   activerecord:
     errors:
       messages:

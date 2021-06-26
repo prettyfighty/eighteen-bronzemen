@@ -14,9 +14,6 @@ zh-TW:
   delete: 刪除
   confirm_delete: 是否確認刪除?
   content: 內容
-  pending: 待處理
-  in_progress: 進行中
-  done: 已完成
   successfully_create_mission: 新增任務成功
   successfully_update_mission: 修改任務成功
   successfully_delete_mission: 刪除任務成功
@@ -27,6 +24,10 @@ zh-TW:
         high: 高
         medium: 中
         low: 低
+      status:
+        pending: 待處理
+        in_progress: 進行中
+        done: 已完成
 
 
 
