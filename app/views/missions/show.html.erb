@@ -1,0 +1,13 @@
+<h1><%= @mission.title %></h1>
+
+<ul>
+  <li><%= @mission.tag %></li>
+  <li>狀態：<%= @mission.status %></li>
+  <li>優先順序：<%= Mission.priorities.key(@mission.priority) %></li>
+  <li>開始時間<%= @mission.start_at %></li>
+  <li>結束時間<%= @mission.end_at %></li>
+</ul>
+
+<div>
+  <%= simple_format(@mission.content) %>
+</div>
