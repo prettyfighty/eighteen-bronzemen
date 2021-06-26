@@ -1,13 +1,17 @@
 <h1><%= @mission.title %></h1>
 
 <ul>
-  <li><%= @mission.tag %></li>
-  <li>狀態：<%= @mission.status %></li>
-  <li>優先順序：<%= Mission.priorities.key(@mission.priority) %></li>
-  <li>開始時間<%= @mission.start_at %></li>
-  <li>結束時間<%= @mission.end_at %></li>
+  <li><%= "#{t("tag")}：#{@mission.tag}" %></li>
+  <li><%= "#{t("status")}：#{@mission.status}" %></li>
+  <li><%= "#{t("priority")}：#{@mission.priority_i18n}" %></li>
+  <li><%= "#{t("start_at")}：#{@mission.start_at.strftime("%Y-%m-%d %H:%M")}" %></li>
+  <li><%= "#{t("end_at")}：#{@mission.end_at.strftime("%Y-%m-%d %H:%M")}" %></li>
 </ul>
 
 <div>
   <%= simple_format(@mission.content) %>
+</div>
+
+<div>
+  <%= link_to t("back_to_mission_list"), missions_path %>
 </div>

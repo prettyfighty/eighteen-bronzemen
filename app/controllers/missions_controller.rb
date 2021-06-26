@@ -14,7 +14,7 @@ class MissionsController < ApplicationController
     @mission = Mission.new(mission_params)
 
     if @mission.save
-      redirect_to root_path, notice: "新增任務成功"
+      redirect_to root_path, notice: t("successfully_create_mission")
     else
       render :new
     end
@@ -28,7 +28,7 @@ class MissionsController < ApplicationController
 
   def update
     if @mission.update(mission_params)
-      redirect_to root_path, notice: "修改任務成功"
+      redirect_to root_path, notice: t("successfully_update_mission")
     else
       render :edit
     end
@@ -36,7 +36,7 @@ class MissionsController < ApplicationController
 
   def destroy
     @mission.delete
-    redirect_to root_path, notice: "刪除任務成功"
+    redirect_to root_path, notice: t("successfully_delete_mission")
   end
 
   private
@@ -47,6 +47,6 @@ class MissionsController < ApplicationController
   def find_mission
     @mission = Mission.find_by(id: params[:id])
   rescue ActiveRecord::RecordNotFound
-    redirect_to root_path, notice: "找不到任務"
+    redirect_to root_path, notice: t("cannot_find_mission")
   end
 end

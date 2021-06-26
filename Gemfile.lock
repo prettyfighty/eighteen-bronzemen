@@ -79,6 +79,8 @@ GEM
     concurrent-ruby (1.1.9)
     crass (1.0.6)
     diff-lcs (1.4.4)
+    enum_help (0.0.17)
+      activesupport (>= 3.0.0)
     erubi (1.10.0)
     ffi (1.15.3)
     figaro (1.2.0)
@@ -227,6 +229,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   capybara (>= 3.26)
+  enum_help (~> 0.0.17)
   figaro (~> 1.2)
   foreman (~> 0.87.2)
   jbuilder (~> 2.7)
