@@ -26,7 +26,7 @@
         <td><%= mission.tag %></td>
         <td><%= mission.start_at.strftime("%Y-%m-%d %H:%M") %></td>
         <td><%= mission.end_at.strftime("%Y-%m-%d %H:%M") %></td>
-        <td><%= mission.status %></td>
+        <td><%= mission.status_i18n %></td>
         <td><%= mission.priority_i18n %></td>
         <td><%= link_to t("edit"), edit_mission_path(mission) %></td>
         <td><%= link_to t("delete"), mission_path(mission), method: "delete", data: {confirm: t("confirm_delete")} %></td>

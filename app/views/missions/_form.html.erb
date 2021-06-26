@@ -2,7 +2,7 @@
   <%= f.input :title, label: t("title") %>
   <%= f.input :content, label: t("content") %>
   <%= f.input :tag, label: t("tag") %>
-  <%= f.input :status, label: t("status"), collection: [t("pending"), t("in_progress"), t("done")] %>
+  <%= f.input :status, label: t("status"), collection: Mission.statuses_i18n %>
   <%= f.input :priority, label: t("priority"), collection: Mission.priorities_i18n %>
   <%= f.input :start_at, label: t("start_at") %>
   <%= f.input :end_at, label: t("end_at") %>
