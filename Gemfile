@@ -33,6 +33,8 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # foreman s -f Procfile.dev
   gem 'foreman', '~> 0.87.2'
+  # a testing framework for Rails 5+
+  gem 'rspec-rails', '~> 5.0', '>= 5.0.1'
 end
 
 group :development do
@@ -62,3 +64,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'figaro', '~> 1.2'
 gem 'simple_form', '~> 5.1'
+
+
