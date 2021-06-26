@@ -1,19 +1,19 @@
-<h1>任務列表</h1>
+<h1><%= t("mission_list") %></h1>
 
 <div>
-  <%= link_to "新增任務",  new_mission_path %>
+  <%= link_to t("new_mission"),  new_mission_path %>
 </div>
 
 <table class="table">
   <thead>
     <tr>
-      <th>作者</th>
-      <th>標題</th>
-      <th>標籤</th>
-      <th>開始時間</th>
-      <th>結束時間</th>
-      <th>狀態</th>
-      <th>優先順序</th>
+      <th><%= t("author") %></th>
+      <th><%= t("title") %></th>
+      <th><%= t("tag") %></th>
+      <th><%= t("start_at") %></th>
+      <th><%= t("end_at") %></th>
+      <th><%= t("status") %></th>
+      <th><%= t("priority") %></th>
       <th></th>
       <th></th>
     </tr>
@@ -24,12 +24,12 @@
         <td></td>
         <td><%= link_to mission.title, mission_path(mission) %></td>
         <td><%= mission.tag %></td>
-        <td><%= mission.start_at %></td>
-        <td><%= mission.end_at %></td>
+        <td><%= mission.start_at.strftime("%Y-%m-%d %H:%M") %></td>
+        <td><%= mission.end_at.strftime("%Y-%m-%d %H:%M") %></td>
         <td><%= mission.status %></td>
-        <td><%= Mission.priorities.key(mission.priority) %></td>
-        <td><%= link_to "編輯", edit_mission_path(mission) %></td>
-        <td><%= link_to "刪除", mission_path(mission), method: "delete", data: {confirm: "是否確定刪除？"} %></td>
+        <td><%= mission.priority_i18n %></td>
+        <td><%= link_to t("edit"), edit_mission_path(mission) %></td>
+        <td><%= link_to t("delete"), mission_path(mission), method: "delete", data: {confirm: t("confirm_delete")} %></td>
       </tr>
     <% end %>
   </tbody>
