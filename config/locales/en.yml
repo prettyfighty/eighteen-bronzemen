@@ -58,6 +58,8 @@ en:
         pending: Pending
         in_progress: In Progress
         done: Done
+  later_than_now: Start-time should be later than now
+  later_than_start_at: End-time should be later than start-time
 
 
 
