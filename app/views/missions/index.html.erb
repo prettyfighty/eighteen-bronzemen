@@ -11,7 +11,7 @@
       <th><%= t("title") %></th>
       <th><%= t("tag") %></th>
       <th><%= t("start_at") %></th>
-      <th><%= t("end_at") %></th>
+      <th><%= sort_link(@q, :end_at, t("end_at"), {}, id: "sortEndAt") %></th>
       <th><%= t("status") %></th>
       <th><%= t("priority") %></th>
       <th></th>
