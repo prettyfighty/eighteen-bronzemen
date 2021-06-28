@@ -2,9 +2,9 @@ require 'rails_helper'
 
 feature "mission list", type: :feature do
   before do
-    m1 = Mission.create!(title: "m1", content: "m1_content", start_at: Time.new(2062, 6, 27, 9, 50, 0), end_at: Time.new(2062, 7, 28, 10, 0, 0), status: 1)
-    m2 = Mission.create!(title: "m2", content: "m2_content", start_at: Time.new(2062, 6, 29, 9, 50, 0), end_at: Time.new(2062, 7, 26, 10, 0, 0), status: 0)
-    m3 = Mission.create!(title: "m3", content: "m3_content", start_at: Time.new(2062, 6, 28, 9, 50, 0), end_at: Time.new(2062, 7, 27, 10, 0, 0), status: 2)
+    m1 = Mission.create!(title: "m1", content: "m1_content", start_at: Time.new(2062, 6, 27, 9, 50, 0), end_at: Time.new(2062, 7, 28, 10, 0, 0), status: 1, priority: 1)
+    m2 = Mission.create!(title: "m2", content: "m2_content", start_at: Time.new(2062, 6, 29, 9, 50, 0), end_at: Time.new(2062, 7, 26, 10, 0, 0), status: 0, priority: 3)
+    m3 = Mission.create!(title: "m3", content: "m3_content", start_at: Time.new(2062, 6, 28, 9, 50, 0), end_at: Time.new(2062, 7, 27, 10, 0, 0), status: 2, priority: 2)
   end
 
   scenario "ordered by created_at" do
@@ -21,7 +21,15 @@ feature "mission list", type: :feature do
     expect(page.body).to match(/m2.*m3.*m1/m)
   end
 
-  scenario "searched by title with ransack" do
+  scenario "ordered by priority with ransack" do
+    visit "/"
+
+    click_link "sortPriority" # sort_link :end_at
+
+    expect(page.body).to match(/m1.*m3.*m2/m)
+  end
+
+  scenario "search by title with ransack" do
     visit "/"
 
     within("#mission_search") do # search for missions with title includes "m1"
@@ -33,7 +41,7 @@ feature "mission list", type: :feature do
     expect(page.body).not_to have_content("m2")
   end
 
-  scenario "searched by status with ransack" do
+  scenario "search by status with ransack" do
     visit "/"
 
     within("#mission_search") do # search for missions pending
