@@ -4,6 +4,16 @@
   <%= link_to t("new_mission"),  new_mission_path %>
 </div>
 
+<%= search_form_for @q do |f| %>
+  <%= f.label t("title") %>
+  <%= f.search_field :title_cont %>
+  <%= f.label t("status") %>
+  <%= f.select :status_eq, Mission.statuses.map { |k,v| [Mission.statuses_i18n[k], v] }, { include_blank: ""} %>
+  <%= f.submit %>
+<% end %>
+
+<%= link_to t("cancel_search"), missions_path %>
+
 <table class="table">
   <thead>
     <tr>
