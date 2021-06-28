@@ -28,6 +28,9 @@ zh-TW:
         pending: 待處理
         in_progress: 進行中
         done: 已完成
+  later_than_now: 開始時間不能晚於現在時間
+  later_than_start_at: 結束時間不能晚於開始時間
+
 
 
 
