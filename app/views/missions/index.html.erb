@@ -23,7 +23,7 @@
       <th><%= t("start_at") %></th>
       <th><%= sort_link(@q, :end_at, t("end_at"), {}, id: "sortEndAt") %></th>
       <th><%= t("status") %></th>
-      <th><%= t("priority") %></th>
+      <th><%= sort_link(@q, :priority, t("priority"), {}, id: "sortPriority") %></th>
       <th></th>
       <th></th>
     </tr>
