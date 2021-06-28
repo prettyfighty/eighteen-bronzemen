@@ -30,6 +30,7 @@ zh-TW:
         done: 已完成
   later_than_now: 開始時間不能晚於現在時間
   later_than_start_at: 結束時間不能晚於開始時間
+  cancel_search: 取消搜尋
 
 
 
