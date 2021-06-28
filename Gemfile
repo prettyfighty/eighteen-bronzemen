@@ -68,5 +68,7 @@ gem 'simple_form', '~> 5.1'
 gem 'enum_help', '~> 0.0.17'
 # MetaSearch
 gem 'ransack', '~> 2.4', '>= 2.4.2'
+# paginator
+gem 'kaminari', '~> 1.2', '>= 1.2.1'
 
 
