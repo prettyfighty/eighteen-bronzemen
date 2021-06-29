@@ -35,7 +35,7 @@
   <tbody>
     <% @missions.each do |mission| %>
       <tr>
-        <td></td>
+        <td><%= mission.user.email %></td>
         <td><%= link_to mission.title, mission_path(mission), class: "text-decoration-none text-info fw-bold" %></td>
         <td><%= mission.tag %></td>
         <td><%= mission.start_at.strftime("%Y-%m-%d %H:%M") %></td>
