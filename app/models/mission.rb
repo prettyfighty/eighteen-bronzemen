@@ -1,5 +1,5 @@
 class Mission < ApplicationRecord
-  # belongs_to :user
+  belongs_to :user
 
   enum status: { pending: 0, in_progress: 1, done: 2 }
   enum priority: { high: 1, medium: 2, low: 3 }
