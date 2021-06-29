@@ -1,7 +1,7 @@
-<h1><%= t("new_mission") %></h1>
+<h1 class="mb-3 text-center fw-bold"><%= t("new_mission") %></h1>
 
 <%= render 'form', mission: @mission %>
 
 <div>
-  <%= link_to t("back_to_mission_list"), missions_path %>
+  <%= link_to t("back_to_mission_list"), missions_path, class: "btn btn-outline-primary" %>
 </div>

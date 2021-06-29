@@ -1,3 +1,18 @@
 #notice {
-  color: #f00;
+  background-color: rgb(248, 250, 219);
+  color: rgb(211, 1, 1);
+}
+
+#sortStartAt, #sortEndAt, #sortPriority {
+  text-decoration: none;
+  color: #000;
+}
+
+#sortStartAt:hover, #sortEndAt:hover, #sortPriority:hover {
+  color: #888;
+}
+
+#paginate > nav > ul {
+  display: flex;
+  justify-content: center;
 }

@@ -1,0 +1,30 @@
+abbr[title="required"] {
+  color: #f00;
+  text-decoration: none !important;
+}
+
+.mission_status, .mission_priority {
+  flex-grow: 1;
+}
+
+.mission_status {
+  padding-right: .5rem;
+}
+
+.mission_priority {
+  padding-left: .5rem;
+}
+
+.error {
+  color: #f00;
+  font-weight: bolder;
+}
+
+.field_with_errors > input, .field_with_errors > textarea {
+  outline: 1px solid #f00;
+}
+
+.field_with_errors > label {
+  color: #f00;
+  font-weight: bolder;
+}

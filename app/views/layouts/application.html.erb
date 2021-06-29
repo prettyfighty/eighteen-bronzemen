@@ -12,13 +12,15 @@
   </head>
 
   <body>
-    <nav id="navBar">
-      <%= link_to "中文版", language: "zh-TW" %>
-      <%= link_to "English", language: "en" %>
-    </nav>
-    <div id="notice">
-      <%= notice %>
+    <div class="container">
+      <nav id="navBar">
+        <%= link_to "中文版", {language: "zh-TW"}, class: "btn btn-light" %>
+        <%= link_to "English", {language: "en"}, class: "btn btn-light" %>
+      </nav>
+      <div id="notice" class="fw-bolder text-center">
+        <%= notice %>
+      </div>
+      <%= yield %>
     </div>
-    <%= yield %>
   </body>
 </html>
