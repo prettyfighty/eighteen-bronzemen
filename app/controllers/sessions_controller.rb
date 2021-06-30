@@ -9,8 +9,7 @@ class SessionsController < ApplicationController
     user = User.login(user_params)
 
     if user
-      # gem install figaro
-      session[ENV['session_name']] = user.id
+      session[ENV["session_name"]] = user.id
 
       redirect_to root_path, notice: t("successfully_sign_in")
     else
@@ -20,7 +19,7 @@ class SessionsController < ApplicationController
 
   def destroy
 
-    session[ENV['session_name']] = nil
+    session[ENV["session_name"]] = nil
     redirect_to sign_in_sessions_path, notice: t("successfully_sign_out")
   end
 
