@@ -61,12 +61,33 @@ en:
   later_than_now: Start-time should be later than now
   later_than_start_at: End-time should be later than start-time
   cancel_search: Cancel Search
+  user_sign_up: Sign Up
+  user_sign_in: Sign In
+  sign_up: Sign Up
+  sign_in: Sign In
+  email: Email
+  password: Password
+  confirm_password: Confirm Password
+  email_password_wrong: Either Email or Password is wrong
+  back_to_sign_in: Back to Sign In Page
 
 
 
 # --- #  rails-i18n https://github.com/svenfuchs/rails-i18n/tree/master/rails/locale/
   activerecord:
     errors:
+      models:
+          user:
+            attributes:
+              email:
+                taken: Email has been taken
+                blank: required
+                invalid: Please enter a correct email
+              password:
+                blank: required
+                too_short: too short
+              password_confirmation:
+                confirmation: doesn't match Password
       messages:
         record_invalid: 'Validation failed: %{errors}'
         restrict_dependent_destroy:

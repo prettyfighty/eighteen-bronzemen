@@ -31,6 +31,16 @@ zh-TW:
   later_than_now: 開始時間不能晚於現在時間
   later_than_start_at: 結束時間不能晚於開始時間
   cancel_search: 取消搜尋
+  user_sign_up: 使用者註冊
+  user_sign_in: 使用者登入
+  sign_up: 註冊
+  sign_in: 登入
+  email: Email
+  password: 密碼
+  confirm_password: 再次輸入密碼
+  email_password_wrong: 您輸入的帳號或密碼錯誤
+  back_to_sign_in: 返回登入頁面
+
 
 
 
@@ -38,6 +48,18 @@ zh-TW:
 # --- #  rails-i18n https://github.com/svenfuchs/rails-i18n/tree/master/rails/locale/
   activerecord:
     errors:
+      models:
+          user:
+            attributes:
+              email:
+                taken: 此 Email 已被使用了，請改用其他 Email
+                blank: 必填
+                invalid: Email格式錯誤
+              password:
+                blank: 必填
+                too_short: 密碼長度不夠
+              password_confirmation:
+                confirmation: 輸入密碼不一致
       messages:
         record_invalid: '校驗失敗: %{errors}'
         restrict_dependent_destroy:
