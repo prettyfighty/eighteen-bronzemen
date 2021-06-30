@@ -13,9 +13,12 @@
 
   <body>
     <div class="container">
-      <nav id="navBar">
-        <%= link_to "中文版", {language: "zh-TW"}, class: "btn btn-light" %>
-        <%= link_to "English", {language: "en"}, class: "btn btn-light" %>
+      <nav id="navBar" class="d-flex justify-content-between my-3">
+        <div>
+          <%= link_to "中文版", {language: "zh-TW"}, class: "btn btn-light" %>
+          <%= link_to "English", {language: "en"}, class: "btn btn-light" %>
+        </div>
+        <%= link_to t("sign_out"), sign_out_sessions_path,method: "delete", class: "btn btn-light" %>
       </nav>
       <div id="notice" class="fw-bolder text-center">
         <%= notice %>

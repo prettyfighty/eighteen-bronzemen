@@ -19,11 +19,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    cookies[:return_to_url] = request.referer
 
     session[ENV['session_name']] = nil
-    redirect_to cookies[:return_to_url] || root_path, notice: t("successfully_sign_out")
-    cookies[:return_to_url] = nil
+    redirect_to sign_in_sessions_path, notice: t("successfully_sign_out")
   end
 
   private

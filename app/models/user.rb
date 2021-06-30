@@ -6,18 +6,6 @@ class User < ApplicationRecord
 
   before_create :encrypt_password
 
-  module Jiami
-
-    def self.salt(password, head = 'abc', tail = '123')
-      "#{head}#{password}#{tail}"
-    end
-
-    def self.encrypt(password)
-      Digest::SHA256.hexdigest(password)
-    end
-  end
-
-
   def self.login(params)
     email = params[:email]
     password = params[:password]
@@ -25,7 +13,6 @@ class User < ApplicationRecord
     encrypted_password = Digest::SHA256.hexdigest("eighteen#{password}bronzemen")
     find_by(email: email, password: encrypted_password)
   end
-
 
   private
   def encrypt_password

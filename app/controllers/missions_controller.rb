@@ -4,9 +4,8 @@ class MissionsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    # @missions = Mission.order(created_at: :asc)
-    @q = Mission.ransack(params[:q])
-    @missions = @q.result.includes(:user).order(created_at: :asc).page(params[:page]).per(25)
+    @q = current_user.missions.ransack(params[:q])
+    @missions = @q.result.order(created_at: :asc).page(params[:page]).per(25)
   end
 
   def new
@@ -14,7 +13,7 @@ class MissionsController < ApplicationController
   end
 
   def create
-    @mission = Mission.new(mission_params)
+    @mission = current_user.missions.new(mission_params)
 
     if @mission.save
       redirect_to root_path, notice: t("successfully_create_mission")
@@ -48,7 +47,7 @@ class MissionsController < ApplicationController
   end
 
   def find_mission
-    @mission = Mission.find_by(id: params[:id])
+    @mission = current_user.missions.find_by!(id: params[:id])
   rescue ActiveRecord::RecordNotFound
     redirect_to root_path, notice: t("cannot_find_mission")
   end

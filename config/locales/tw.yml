@@ -35,6 +35,7 @@ zh-TW:
   user_sign_in: 使用者登入
   sign_up: 註冊
   sign_in: 登入
+  sign_out: 登出
   email: Email
   password: 密碼
   confirm_password: 再次輸入密碼
