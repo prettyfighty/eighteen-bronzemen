@@ -1,2 +1,3 @@
 basic_authenticate_name: your_name
 basic_authenticate_password: your_password
+session_name: your_session_name
