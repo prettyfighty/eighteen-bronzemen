@@ -46,6 +46,14 @@ zh-TW:
   successfully_sign_in: 登入成功，歡迎使用本系統
   successfully_sign_out: 已成功登出
   authenticate_user: 請先登入
+  admin_page: 管理者後台
+  back_to_user_list: 返回使用者列表
+  user_list: 使用者列表
+  new_user: 新增使用者
+  edit_user: 修改使用者
+  created_at: 建立時間
+  missions_amount: 任務數量
+  role_not_admin: 您不是管理者
 
 
 

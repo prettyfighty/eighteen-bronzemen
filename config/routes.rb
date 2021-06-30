@@ -19,4 +19,8 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :admin, as: "otrmbklhufma" do
+    resources :users
+  end
+
 end

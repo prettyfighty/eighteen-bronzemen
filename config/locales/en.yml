@@ -76,7 +76,15 @@ en:
   successfully_sign_in: Sign In Successfully
   successfully_sign_out: Sign Out Successfully
   authenticate_user: Please Sign In
-
+  admin_page: Admin Dashboard
+  back_to_user_list: Back to User List
+  user_list: User List
+  new_user: Create User
+  edit_user: Edit User
+  user_list: User List
+  created_at: Created At
+  missions_amount: Amount of Missions
+  role_not_admin: You are not an administrator
 
 
 # --- #  rails-i18n https://github.com/svenfuchs/rails-i18n/tree/master/rails/locale/

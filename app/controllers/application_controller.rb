@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  http_basic_authenticate_with name: ENV["basic_authenticate_name"], password: ENV["basic_authenticate_password"], except: :index
 
   around_action :set_locale
 
@@ -19,4 +20,8 @@ class ApplicationController < ActionController::Base
   def user_signed_in?
 		session[ENV['session_name']]
 	end
+
+  def authenticate_user!
+    redirect_to sign_in_sessions_path, notice: t("authenticate_user") if session[ENV['session_name']] == nil
+  end
 end

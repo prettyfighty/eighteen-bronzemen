@@ -3,12 +3,12 @@
   color: rgb(211, 1, 1);
 }
 
-#sortStartAt, #sortEndAt, #sortPriority {
+#sortStartAt, #sortEndAt, #sortPriority, #sortUserId, #sortUserEmail, #sortUserCreatedAt {
   text-decoration: none;
   color: #000;
 }
 
-#sortStartAt:hover, #sortEndAt:hover, #sortPriority:hover {
+#sortStartAt:hover, #sortEndAt:hover, #sortPriority:hover, #sortUserId:hover, #sortUserEmail:hover, #sortUserCreatedAt:hover {
   color: #888;
 }
 

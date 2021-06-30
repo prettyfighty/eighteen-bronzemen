@@ -18,9 +18,12 @@
           <%= link_to "中文版", {language: "zh-TW"}, class: "btn btn-light" %>
           <%= link_to "English", {language: "en"}, class: "btn btn-light" %>
         </div>
-        <% if user_signed_in? %>
-          <%= link_to t("sign_out"), sign_out_sessions_path,method: "delete", class: "btn btn-light" %>
-        <% end %>
+        <div>
+          <% if user_signed_in? %>
+            <%= link_to t("admin_page"), otrmbklhufma_users_path, class: "btn btn-light" %>
+            <%= link_to t("sign_out"), sign_out_sessions_path,method: "delete", class: "btn btn-light" %>
+          <% end %>
+        </div>
       </nav>
       <div id="notice" class="fw-bolder text-center">
         <%= notice %>
