@@ -13,7 +13,7 @@ class Mission < ApplicationRecord
 
   private
   def check_start_at
-    errors.add(:start_at, I18n.t("later_than_now")) if self.start_at? && self.start_at < Time.now
+    errors.add(:start_at, I18n.t("later_than_now")) if self.start_at? && self.start_at < Time.now - 10.minutes
   end
 
   def check_end_at
