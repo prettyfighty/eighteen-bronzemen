@@ -70,6 +70,11 @@ en:
   confirm_password: Confirm Password
   email_password_wrong: Either Email or Password is wrong
   back_to_sign_in: Back to Sign In Page
+  new_user_sign_up: Sign Up for an Account
+  successfully_create_user: Sign Up Successfully
+  successfully_sign_in: Sign In Successfully
+  successfully_sign_out: Sign Out Successfully
+  authenticate_user: Please Sign In
 
 
 

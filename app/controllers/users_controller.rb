@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to sign_up_users_path
+      redirect_to sign_in_sessions_path, notice: t("successfully_create_user")
     else
       render :new
     end
