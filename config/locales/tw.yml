@@ -40,6 +40,11 @@ zh-TW:
   confirm_password: 再次輸入密碼
   email_password_wrong: 您輸入的帳號或密碼錯誤
   back_to_sign_in: 返回登入頁面
+  new_user_sign_up: 新用戶註冊
+  successfully_create_user: 註冊成功
+  successfully_sign_in: 登入成功，歡迎使用本系統
+  successfully_sign_out: 已成功登出
+  authenticate_user: 請先登入
 
 
 

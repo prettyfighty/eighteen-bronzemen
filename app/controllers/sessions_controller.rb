@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       # gem install figaro
       session[ENV['session_name']] = user.id
 
-      redirect_to root_path
+      redirect_to root_path, notice: t("successfully_sign_in")
     else
       redirect_to sign_in_sessions_path, notice: t("email_password_wrong")
     end
@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
     cookies[:return_to_url] = request.referer
 
     session[ENV['session_name']] = nil
-    redirect_to cookies[:return_to_url] || root_path
+    redirect_to cookies[:return_to_url] || root_path, notice: t("successfully_sign_out")
     cookies[:return_to_url] = nil
   end
 
