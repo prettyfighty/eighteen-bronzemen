@@ -38,7 +38,7 @@ feature "sign up", type: :feature do
     end
     click_button "commit"
 
-    expect(page.body).to have_content(I18n.t("successfully_create_user"))
+    expect(page.body).to have_content(I18n.t("successfully_sign_up"))
   end
 
   scenario "email taken" do

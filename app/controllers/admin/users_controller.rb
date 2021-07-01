@@ -10,21 +10,38 @@ class Admin::UsersController < ApplicationController
   end
 
   def new
+    @user = User.new
   end
 
   def create
+    @user = User.new(user_params)
+
+    if @user.save
+      redirect_to otrmbklhufma_users_path, notice: t("successfully_create_user")
+    else
+      render :new
+    end
   end
 
   def show
+    @q = @user.missions.ransack(params[:q])
+    @missions = @q.result.order(created_at: :asc).page(params[:page]).per(25)
   end
 
   def edit
   end
 
   def update
+    if @user.update(user_params)
+      redirect_to otrmbklhufma_users_path, notice: t("successfully_update_user")
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @user.delete
+    redirect_to otrmbklhufma_users_path, notice: t("successfully_delete_user")
   end
 
   private
@@ -37,6 +54,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def check_role!
-    redirect_to root_path, notice: t("role_not_admin") if current_user.role != nil
+    redirect_to root_path, notice: t("role_not_admin") unless admin?
   end
+
 end

@@ -1,6 +1,6 @@
 class MissionsController < ApplicationController
 
-  before_action :find_mission, only: [:show, :edit, :update, :destroy]
+  before_action :find_mission, only: [:edit, :update, :destroy]
   before_action :authenticate_user!
 
   def index
@@ -23,6 +23,14 @@ class MissionsController < ApplicationController
   end
 
   def show
+    if admin?
+      @mission = Mission.find(params[:id])
+      @user = @mission.user
+    else
+      @mission = current_user.missions.find(params[:id])
+    end
+  rescue ActiveRecord::RecordNotFound
+    redirect_to root_path, notice: t("cannot_find_mission")
   end
 
   def edit

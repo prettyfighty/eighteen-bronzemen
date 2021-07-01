@@ -9,6 +9,8 @@ class SessionsController < ApplicationController
     user = User.login(user_params)
 
     if user
+      session[ENV["user_role"]] = user.role
+      session[ENV["user_name"]] = user.email[/^\w+/]
       session[ENV["session_name"]] = user.id
 
       redirect_to root_path, notice: t("successfully_sign_in")
