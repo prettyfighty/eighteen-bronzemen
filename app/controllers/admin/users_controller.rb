@@ -41,8 +41,11 @@ class Admin::UsersController < ApplicationController
   end
 
   def destroy
-    @user.delete
-    redirect_to otrmbklhufma_users_path, notice: t("successfully_delete_user")
+    if @user.destroy
+      redirect_to otrmbklhufma_users_path, notice: t("successfully_delete_user")
+    else
+      redirect_to otrmbklhufma_users_path, notice: t("only_one_admin")
+    end
   end
 
   private

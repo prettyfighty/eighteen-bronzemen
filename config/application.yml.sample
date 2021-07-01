@@ -2,5 +2,5 @@ basic_authenticate_name: your_name
 basic_authenticate_password: your_password
 session_name: your_session_name
 user_role: current_user_role
-user_name: current_user_name
+user_email: current_user_email
 

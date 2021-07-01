@@ -60,6 +60,7 @@ zh-TW:
   update_user: 修改使用者
   create_user: 新增使用者
   back_to_user_mission_list: 返回使用者任務列表
+  only_one_admin: 管理者人數不得少於一名
 
 
 

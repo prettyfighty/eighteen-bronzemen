@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  before_destroy :check_admin_numbers, prepend: true
   has_many :missions, dependent: :destroy
 
   validates :email, presence: true, uniqueness: true, format: { with: /.+\@.+\..+/ }
@@ -18,6 +19,12 @@ class User < ApplicationRecord
   private
   def encrypt_password
     self.password = Digest::SHA256.hexdigest("eighteen#{password}bronzemen")
+  end
+
+  def check_admin_numbers
+    if self.role == "admin"
+      throw :abort if User.where(role: "admin").count <= 1
+    end
   end
 
 end
