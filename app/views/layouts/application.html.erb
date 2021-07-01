@@ -20,7 +20,7 @@
         </div>
         <div>
           <% if user_signed_in? %>
-            <span id="helloUser" class="btn text-secondary fw-bold"><%= "Hello, #{session[ENV["user_name"]]}" %></span>
+            <span id="helloUser" class="btn text-secondary fw-bold"><%= "Hello, #{session[ENV["user_email"]][/^\w+/]}" %></span>
             <%= link_to t("admin_page"), otrmbklhufma_users_path, class: "btn btn-light" %>
             <%= link_to t("sign_out"), sign_out_sessions_path,method: "delete", class: "btn btn-light" %>
           <% end %>

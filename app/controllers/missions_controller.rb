@@ -45,7 +45,7 @@ class MissionsController < ApplicationController
   end
 
   def destroy
-    @mission.delete
+    @mission.destroy
     redirect_to root_path, notice: t("successfully_delete_mission")
   end
 

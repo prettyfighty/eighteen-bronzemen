@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
 
     if user
       session[ENV["user_role"]] = user.role
-      session[ENV["user_name"]] = user.email[/^\w+/]
+      session[ENV["user_email"]] = user.email
       session[ENV["session_name"]] = user.id
 
       redirect_to root_path, notice: t("successfully_sign_in")

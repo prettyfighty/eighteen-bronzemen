@@ -91,6 +91,7 @@ en:
   update_user: Update User
   create_user: Create User
   back_to_user_mission_list: Back to User's Mission List
+  only_one_admin: There must be at least one admin
 
 
 # --- #  rails-i18n https://github.com/svenfuchs/rails-i18n/tree/master/rails/locale/
