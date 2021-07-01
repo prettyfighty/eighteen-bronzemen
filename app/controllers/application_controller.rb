@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   around_action :set_locale
 
-  helper_method :current_user, :user_signed_in?
+  helper_method :current_user, :user_signed_in?, :admin?
 
   private
   def set_locale(&action)
@@ -24,4 +24,9 @@ class ApplicationController < ActionController::Base
   def authenticate_user!
     redirect_to sign_in_sessions_path, notice: t("authenticate_user") if session[ENV['session_name']] == nil
   end
+
+  def admin?
+    session[ENV["user_role"]] == "admin"
+  end
+
 end

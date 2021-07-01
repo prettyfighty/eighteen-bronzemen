@@ -72,7 +72,7 @@ en:
   email_password_wrong: Either Email or Password is wrong
   back_to_sign_in: Back to Sign In Page
   new_user_sign_up: Sign Up for an Account
-  successfully_create_user: Sign Up Successfully
+  successfully_sign_up: Sign Up Successfully
   successfully_sign_in: Sign In Successfully
   successfully_sign_out: Sign Out Successfully
   authenticate_user: Please Sign In
@@ -85,6 +85,12 @@ en:
   created_at: Created At
   missions_amount: Amount of Missions
   role_not_admin: You are not an administrator
+  successfully_create_user: User Created Successfully
+  successfully_update_user: User Edited Successfully
+  successfully_delete_user: User Deleted
+  update_user: Update User
+  create_user: Create User
+  back_to_user_mission_list: Back to User's Mission List
 
 
 # --- #  rails-i18n https://github.com/svenfuchs/rails-i18n/tree/master/rails/locale/

@@ -42,7 +42,7 @@ zh-TW:
   email_password_wrong: 您輸入的帳號或密碼錯誤
   back_to_sign_in: 返回登入頁面
   new_user_sign_up: 新用戶註冊
-  successfully_create_user: 註冊成功
+  successfully_sign_up: 註冊成功
   successfully_sign_in: 登入成功，歡迎使用本系統
   successfully_sign_out: 已成功登出
   authenticate_user: 請先登入
@@ -54,6 +54,12 @@ zh-TW:
   created_at: 建立時間
   missions_amount: 任務數量
   role_not_admin: 您不是管理者
+  successfully_create_user: 新增使用者成功
+  successfully_update_user: 修改使用者成功
+  successfully_delete_user: 刪除使用者成功
+  update_user: 修改使用者
+  create_user: 新增使用者
+  back_to_user_mission_list: 返回使用者任務列表
 
 
 

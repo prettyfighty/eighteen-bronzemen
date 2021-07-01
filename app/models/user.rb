@@ -5,6 +5,7 @@ class User < ApplicationRecord
   validates :password, presence: true, confirmation: true
 
   before_create :encrypt_password
+  before_update :encrypt_password
 
   def self.login(params)
     email = params[:email]
