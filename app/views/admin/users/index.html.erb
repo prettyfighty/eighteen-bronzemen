@@ -36,11 +36,7 @@
         <td><%= user.missions.size %></td>
         <td><%= user.created_at.strftime("%Y-%m-%d %H:%M") %></td>
         <td><%= link_to t("edit"), edit_otrmbklhufma_user_path(user), class: "btn btn-outline-success" %></td>
-        <% if user.id != current_user.id %>
-          <td><%= link_to t("delete"), otrmbklhufma_user_path(user), method: "delete", data: {confirm: t("confirm_delete")}, class: "btn btn-outline-danger" %></td>
-        <% else %>
-          <td></td>
-        <% end %>
+        <td><%= link_to t("delete"), otrmbklhufma_user_path(user), method: "delete", data: {confirm: t("confirm_delete")}, class: "btn btn-outline-danger" %></td>
       </tr>
     <% end %>
   </tbody>
