@@ -1,4 +1,5 @@
 class Admin::UsersController < ApplicationController
+  http_basic_authenticate_with name: ENV["basic_authenticate_name"], password: ENV["basic_authenticate_password"]
 
   before_action :find_user, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
