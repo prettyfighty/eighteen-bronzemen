@@ -9,7 +9,7 @@
 <%= simple_form_for(mission) do |f| %>
   <%= f.input :title, label: t("title"), input_html: {class: "form-control"} %>
   <%= f.input :content, label: t("content"), input_html: {class: "form-control"} %>
-  <%= f.input :tag_list, label: t("tag"), input_html: {class: "form-control"} %>
+  <%= f.input :tag_items, collection: Tag.order(:name), label: t("tag"), input_html: {multiple: true, class: "js-tag-select form-control"} %>
   <div class="d-flex align-items-center mb-3">
     <%= f.input :status, label: t("status"), collection: Mission.statuses_i18n, class: "form-control" %>
     <%= f.input :priority, label: t("priority"), collection: Mission.priorities_i18n, class: "form-control" %>

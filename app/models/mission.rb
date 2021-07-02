@@ -27,6 +27,22 @@ class Mission < ApplicationRecord
     end
   end
 
+  def tag_items
+    tags.map(&:name)
+  end
+
+  def tag_items=(names)
+    self.tags = names.map do |item|
+      Tag.where(name: item.strip).first_or_create! unless item.blank?
+    end.compact!
+  end
+
+  def tag_items_view
+    tags.map do |tag|
+      %Q(<span class="tag">#{tag.name}</span>)
+    end.join(' ')
+  end
+
   private
   def check_start_at
     errors.add(:start_at, I18n.t("later_than_now")) if self.start_at? && self.start_at < Time.now - 10.minutes

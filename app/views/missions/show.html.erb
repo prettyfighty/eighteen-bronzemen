@@ -3,15 +3,15 @@
 <ul>
   <li>
     <span class="fw-bold"><%= "#{t("tag")}：" %></span>
-    <%= @mission.tag_list %>
+    <%= @mission.tag_items_view.html_safe %>
   </li>
   <li>
     <span class="fw-bold"><%= "#{t("status")}：" %></span>
-    <%= @mission.status %>
+    <%= @mission.status_i18n %>
   </li>
   <li>
     <span class="fw-bold"><%= "#{t("priority")}：" %></span>
-    <%= @mission.priority %>
+    <%= @mission.priority_i18n %>
   </li>
   <li>
     <span class="fw-bold"><%= "#{t("start_at")}：" %></span>
