@@ -20,6 +20,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    session[ENV["user_role"]] = nil
+    session[ENV["user_email"]] = nil
     session[ENV["session_name"]] = nil
     redirect_to sign_in_sessions_path, notice: t("successfully_sign_out")
   end

@@ -26,7 +26,7 @@ class Admin::UsersController < ApplicationController
 
   def show
     @q = @user.missions.ransack(params[:q])
-    @missions = @q.result.order(created_at: :asc).page(params[:page]).per(25)
+    @missions = @q.result(distinct: true).order(created_at: :asc).page(params[:page]).per(25)
   end
 
   def edit
