@@ -5,7 +5,7 @@ class MissionsController < ApplicationController
 
   def index
     @q = current_user.missions.ransack(params[:q])
-    @missions = @q.result.order(created_at: :asc).page(params[:page]).per(25)
+    @missions = @q.result(distinct: true).order(created_at: :asc).page(params[:page]).per(25)
   end
 
   def new
@@ -51,7 +51,7 @@ class MissionsController < ApplicationController
 
   private
   def mission_params
-    params.require(:mission).permit(:title, :content, :tag, :status, :priority, :start_at, :end_at)
+    params.require(:mission).permit(:title, :content, :tag_list, :status, :priority, :start_at, :end_at)
   end
 
   def find_mission

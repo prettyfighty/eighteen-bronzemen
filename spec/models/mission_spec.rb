@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe Mission, type: :model do
   # let(:mission){ Mission.new(tag: "travis")}
   it "測試Travis" do
-    mission = Mission.new(tag: "travis")
-    expect(mission.tag).to eq "travis"
+    mission = Mission.new(title: "travis")
+    expect(mission.title).to eq "travis"
   end
 
   describe "validations" do
@@ -32,5 +32,5 @@ RSpec.describe Mission, type: :model do
       expect(mission.errors.full_messages.include?("End at #{I18n.t("later_than_start_at")}")).to be true
     end
   end
-  
+
 end

@@ -1,5 +1,7 @@
 class Mission < ApplicationRecord
   belongs_to :user
+  has_many :taggings
+  has_many :tags, through: :taggings
 
   enum status: { pending: 0, in_progress: 1, done: 2 }
   enum priority: { high: 1, medium: 2, low: 3 }
@@ -10,6 +12,20 @@ class Mission < ApplicationRecord
   validates :end_at, presence: true
   validate :check_start_at
   validate :check_end_at
+
+  def self.tagged_with(name)
+    Tag.find_by!(name: name).missions
+  end
+
+  def tag_list
+    tags.map(&:name).join(', ')
+  end
+
+  def tag_list=(names)
+    self.tags = names.split(',').map do |item|
+      Tag.where(name: item.strip).first_or_create!
+    end
+  end
 
   private
   def check_start_at
