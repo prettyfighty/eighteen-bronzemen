@@ -12,11 +12,18 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-import "bootstrap"
 import "styles"
+
+// bootstrap
+import "bootstrap"
 const bootstrap = require('bootstrap')
 
+// select2
+import "select2"
+import "select2/dist/css/select2.css"
+
 document.addEventListener("turbolinks:load", () => {
+
   var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
   var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
     return new bootstrap.Tooltip(tooltipTriggerEl)
@@ -25,5 +32,10 @@ document.addEventListener("turbolinks:load", () => {
   var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
     return new bootstrap.Popover(popoverTriggerEl)
   })
+
+  $(".js-tag-select").select2({
+    tags: true,
+    tokenSeparators: [',', ' ']
+  });
 })
 
