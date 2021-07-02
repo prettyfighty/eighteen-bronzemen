@@ -9,9 +9,10 @@ class SessionsController < ApplicationController
     user = User.login(user_params)
 
     if user
+      session[ENV["session_name"]] = user.id
       session[ENV["user_role"]] = user.role
       session[ENV["user_email"]] = user.email
-      session[ENV["session_name"]] = user.id
+      session[ENV["user_name"]] = user.email[/^\w+/]
 
       redirect_to root_path, notice: t("successfully_sign_in")
     else
@@ -20,9 +21,10 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    session[ENV["session_name"]] = nil
     session[ENV["user_role"]] = nil
     session[ENV["user_email"]] = nil
-    session[ENV["session_name"]] = nil
+    session[ENV["user_name"]] = nil
     redirect_to sign_in_sessions_path, notice: t("successfully_sign_out")
   end
 
