@@ -1,6 +1,6 @@
 class Mission < ApplicationRecord
   belongs_to :user
-  has_many :taggings
+  has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
 
   enum status: { pending: 0, in_progress: 1, done: 2 }
