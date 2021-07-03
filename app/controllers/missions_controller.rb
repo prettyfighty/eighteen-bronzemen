@@ -2,10 +2,12 @@ class MissionsController < ApplicationController
 
   before_action :find_mission, only: [:edit, :update, :destroy]
   before_action :authenticate_user!
+  after_action :clean_cookies, only: [:index]
 
   def index
     @q = current_user.missions.ransack(params[:q])
     @missions = @q.result(distinct: true).order(created_at: :asc).page(params[:page]).per(25)
+    @expired_missions = current_user.missions.where("end_at <= ?", Time.now).order(end_at: :asc)
   end
 
   def new
@@ -58,6 +60,10 @@ class MissionsController < ApplicationController
     @mission = current_user.missions.find_by!(id: params[:id])
   rescue ActiveRecord::RecordNotFound
     redirect_to root_path, notice: t("cannot_find_mission")
+  end
+
+  def clean_cookies
+    cookies[:first_login] = nil
   end
 
 end

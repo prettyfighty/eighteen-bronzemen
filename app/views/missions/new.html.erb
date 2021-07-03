@@ -1,7 +1,11 @@
-<h1 class="mb-3 text-center fw-bold"><%= t("new_mission") %></h1>
+<div class="container">
+  <%= render 'layouts/navbar' %>
 
-<%= render 'form', mission: @mission %>
+  <h1 class="mb-3 text-center fw-bold"><%= t("new_mission") %></h1>
 
-<div>
-  <%= link_to t("back_to_mission_list"), missions_path, class: "btn btn-outline-primary" %>
+  <%= render 'form', mission: @mission %>
+
+  <div>
+    <%= link_to t("back_to_mission_list"), missions_path, class: "btn btn-outline-primary" %>
+  </div>
 </div>

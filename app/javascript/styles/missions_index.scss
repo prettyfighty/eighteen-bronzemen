@@ -1,0 +1,35 @@
+.full-screen-bg {
+  width: 100%;
+  height: 100%;
+  background-color: rgba($color: #000000, $alpha: 0.6);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.reminder-content {
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 1rem;
+  position: absolute;
+  margin-top: -20%;
+}
+
+#closeReminderBtn {
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+  padding: 0 0.5em;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #000;
+  border: 1px solid #000;
+}
+
+#closeReminderBtn:hover {
+  color: #888;
+  border-color: #888;
+}
+
