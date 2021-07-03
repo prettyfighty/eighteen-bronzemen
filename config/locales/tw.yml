@@ -10,8 +10,9 @@ zh-TW:
   end_at: 結束時間
   status: 狀態
   priority: 優先順序
-  edit: 編輯
+  edit: 修改
   delete: 刪除
+  share: 分享
   confirm_delete: 是否確認刪除?
   content: 內容
   successfully_create_mission: 新增任務成功
@@ -61,6 +62,16 @@ zh-TW:
   create_user: 新增使用者
   back_to_user_mission_list: 返回使用者任務列表
   only_one_admin: 管理者人數不得少於一名
+  confirm: 確定
+  cancel: 取消
+  enter_shared_user_email: 請輸入欲「分享」或「刪除」的使用者email
+  user_not_found: 找不到該使用者
+  already_shared_user: 該用戶已為此任務的共享使用者
+  successfully_shared: 分享任務成功
+  successfully_deleted_shared_user: 已成功移除該共享使用者
+  shared_users: 共享使用者
+  cannot_self_share: 不能分享給自己
+  manage_sharings: 分享管理
 
 
 

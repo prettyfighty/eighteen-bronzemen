@@ -29,7 +29,7 @@
 
 <div class="container">
   <%= render 'layouts/navbar' %>
-  
+
   <h1 class="mb-3 text-center fw-bold"><%= t("mission_list") %></h1>
 
   <div>
@@ -55,7 +55,7 @@
   <table class="table table-hover text-center">
     <thead>
       <tr>
-        <th><%= t("author") %></th>
+        <th>id</th>
         <th><%= t("title") %></th>
         <th><%= t("tag") %></th>
         <th><%= sort_link(@q, :start_at, t("start_at"), {}, id: "sortStartAt") %></th>
@@ -64,12 +64,13 @@
         <th><%= sort_link(@q, :priority, t("priority"), {}, id: "sortPriority") %></th>
         <th></th>
         <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
       <% @missions.each do |mission| %>
         <tr>
-          <td><%= mission.user.email %></td>
+          <td><%= mission.id %></td>
           <td><%= link_to mission.title, mission_path(mission), class: "text-decoration-none text-info fw-bold" %></td>
           <td><%= mission.tag_items_view.html_safe %></td>
           <td><%= mission.start_at.strftime("%Y-%m-%d %H:%M") %></td>
@@ -78,6 +79,15 @@
           <td><%= mission.priority_i18n %></td>
           <td><%= link_to t("edit"), edit_mission_path(mission), class: "btn btn-outline-success" %></td>
           <td><%= link_to t("delete"), mission_path(mission), method: "delete", data: {confirm: t("confirm_delete")}, class: "btn btn-outline-danger" %></td>
+          <td class="position-relative">
+            <span id="shareMissionBtn" class="btn btn-outline-dark" data-mission-id="<%= mission.id %>"><%= t("manage_sharings") %></span>
+            <div class="share-mission-content position-absolute p-3">
+              <label class="mb-2 flex-grow-1"><%= t("enter_shared_user_email") %></label>
+              <input type="text" placeholder="example@example.com" class="mb-2" id="sharedUserEmail">
+              <span id="confirmSharedUser" class="btn btn-primary" data-mission-id="<%= mission.id %>"><%= t('confirm') %></span>
+              <span id="closeShareMissionBtn" class="btn btn-outline-primary mx-2"><%= I18n.t('cancel') %></span>
+            </div>
+          </td>
         </tr>
       <% end %>
     </tbody>

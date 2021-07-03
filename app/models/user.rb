@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   before_destroy :check_admin_numbers, prepend: true
   has_many :missions, dependent: :destroy
+  has_many :sharings, dependent: :destroy
+  has_many :shared_missions, through: :sharings, source: :mission
 
   validates :email, presence: true, uniqueness: true, format: { with: /.+\@.+\..+/ }
   validates :password, presence: true, confirmation: true

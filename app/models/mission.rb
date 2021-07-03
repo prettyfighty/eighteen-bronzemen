@@ -2,6 +2,8 @@ class Mission < ApplicationRecord
   belongs_to :user
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
+  has_many :sharings, dependent: :destroy
+  has_many :shared_users, through: :sharings, source: :user
 
   enum status: { pending: 0, in_progress: 1, done: 2 }
   enum priority: { high: 1, medium: 2, low: 3 }

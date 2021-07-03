@@ -24,6 +24,10 @@
       <span class="fw-bold"><%= "#{t("end_at")}：" %></span>
       <%= @mission.end_at.strftime("%Y-%m-%d %H:%M") %>
     </li>
+    <li>
+      <span class="fw-bold"><%= "#{t("shared_users")}：" %></span>
+      <%= @mission.shared_users.map(&:email).join(', ') %>
+    </li>
   </ul>
 
   <div class="border border-2 my-3 p-3">

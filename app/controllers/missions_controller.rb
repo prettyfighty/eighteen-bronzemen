@@ -1,12 +1,12 @@
 class MissionsController < ApplicationController
 
-  before_action :find_mission, only: [:edit, :update, :destroy]
+  before_action :find_mission, only: [:edit, :update, :destroy, :share_mission]
   before_action :authenticate_user!
   after_action :clean_cookies, only: [:index]
 
   def index
     @q = current_user.missions.ransack(params[:q])
-    @missions = @q.result(distinct: true).order(created_at: :asc).page(params[:page]).per(25)
+    @missions = @q.result(distinct: true).includes(:tags).order(created_at: :asc).page(params[:page]).per(25)
     @expired_missions = current_user.missions.where("end_at <= ?", Time.now).order(end_at: :asc)
   end
 
@@ -49,6 +49,23 @@ class MissionsController < ApplicationController
   def destroy
     @mission.destroy
     redirect_to root_path, notice: t("successfully_delete_mission")
+  end
+
+  def share_mission
+    user = User.find_by(email: params[:email])
+    if user && user != current_user
+      if @mission.shared_users.exists?(user.id)
+        @mission.shared_users.destroy(user)
+        render json: { status: "delete", message: I18n.t("successfully_deleted_shared_user") }
+      else
+        @mission.shared_users << user
+        render json: { status: "shared", message: I18n.t("successfully_shared") }
+      end
+    elsif user == current_user
+      render json: { status: "self", message: I18n.t("cannot_self_share") }
+    else
+      render json: { status: "not_found", message: I18n.t("user_not_found") }
+    end
   end
 
   private

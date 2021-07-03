@@ -2,7 +2,11 @@ Rails.application.routes.draw do
 
   root 'missions#index'
 
-  resources :missions
+  resources :missions do
+    member do
+      post :share_mission
+    end
+  end
 
   resources :users, path: "user", only: [] do
     collection do
