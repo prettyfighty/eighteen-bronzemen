@@ -70,6 +70,8 @@ en:
   successfully_shared: Mission shared successfully
   successfully_deleted_shared_user: Shared User Deleted
   shared_users: Shared Users
+  shared_missions: Sharing Missions
+  shared_missions_list: Sharing Missions List
   cannot_self_share: You can not share a mission with yourself
   manage_sharings: Manage Sharings
 

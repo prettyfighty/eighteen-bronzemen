@@ -12,8 +12,8 @@ class Mission < ApplicationRecord
   validates :content, presence: true
   validates :start_at, presence: true
   validates :end_at, presence: true
-  # validate :check_start_at
   validate :check_end_at
+
 
   def self.tagged_with(name)
     Tag.find_by!(name: name).missions
@@ -29,6 +29,7 @@ class Mission < ApplicationRecord
     end
   end
 
+  # 用select2 改以陣列顯示
   def tag_items
     tags.map(&:name)
   end
@@ -46,10 +47,6 @@ class Mission < ApplicationRecord
   end
 
   private
-  # def check_start_at
-  #   errors.add(:start_at, I18n.t("later_than_now")) if self.start_at? && self.start_at < Time.now - 10.minutes
-  # end
-
   def check_end_at
     errors.add(:end_at, I18n.t("later_than_start_at")) if self.end_at? && self.end_at < self.start_at
   end

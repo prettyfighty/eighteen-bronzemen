@@ -5,6 +5,10 @@
 
   <ul>
     <li>
+      <span class="fw-bold"><%= "#{t("author")}：" %></span>
+      <%= @mission.user.email[/^\w+/] %>
+    </li>
+    <li>
       <span class="fw-bold"><%= "#{t("tag")}：" %></span>
       <%= @mission.tag_items_view.html_safe %>
     </li>
