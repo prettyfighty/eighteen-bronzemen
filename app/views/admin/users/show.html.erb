@@ -1,52 +1,56 @@
-<h1 class="mb-3 text-center fw-bold"><%= "#{@user.email[/^\w+/]} #{t("mission_list")}" %></h1>
+<div class="container">
+  <%= render 'layouts/navbar' %>
 
-<div>
-  <%= link_to t("back_to_user_list"), otrmbklhufma_users_path, class: "btn btn-outline-secondary" %>
-</div>
+  <h1 class="mb-3 text-center fw-bold"><%= "#{@user.email[/^\w+/]} #{t("mission_list")}" %></h1>
 
-<div class="d-flex align-items-center">
-  <%= search_form_for @q, url: otrmbklhufma_user_path, class: "flex-grow-1" do |f| %>
-    <div class="input-group my-3">
-      <%= f.label t("title"), class: "input-group-text" %>
-      <%= f.search_field :title_cont, class: "form-control" %>
-      <%= f.label t("tag"), class: "input-group-text" %>
-      <%= f.search_field :tags_name_cont_all, class: "form-control" %>
-      <%= f.label t("status"), class: "input-group-text" %>
-      <%= f.select :status_eq, Mission.statuses.map { |k,v| [Mission.statuses_i18n[k], v] }, { include_blank: ""}, class: "form-select" %>
-      <%= f.submit class: "btn btn-secondary" %>
-    </div>
-  <% end %>
-  <%= link_to t("cancel_search"), otrmbklhufma_user_path(@user), class: "btn btn-outline-secondary mx-2" %>
-</div>
+  <div>
+    <%= link_to t("back_to_user_list"), otrmbklhufma_users_path, class: "btn btn-outline-secondary" %>
+  </div>
 
-
-<table class="table table-hover text-center">
-  <thead>
-    <tr>
-      <th><%= t("author") %></th>
-      <th><%= t("title") %></th>
-      <th><%= t("tag") %></th>
-      <th><%= sort_link(@q, :start_at, t("start_at"), {}, id: "sortStartAt") %></th>
-      <th><%= sort_link(@q, :end_at, t("end_at"), {}, id: "sortEndAt") %></th>
-      <th><%= t("status") %></th>
-      <th><%= sort_link(@q, :priority, t("priority"), {}, id: "sortPriority") %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @missions.each do |mission| %>
-      <tr>
-        <td><%= mission.user.email %></td>
-        <td><%= link_to mission.title, mission_path(mission), class: "text-decoration-none text-info fw-bold" %></td>
-        <td><%= mission.tag_items_view.html_safe %></td>
-        <td><%= mission.start_at.strftime("%Y-%m-%d %H:%M") %></td>
-        <td><%= mission.end_at.strftime("%Y-%m-%d %H:%M") %></td>
-        <td><%= mission.status_i18n %></td>
-        <td><%= mission.priority_i18n %></td>
-      </tr>
+  <div class="d-flex align-items-center">
+    <%= search_form_for @q, url: otrmbklhufma_user_path, class: "flex-grow-1" do |f| %>
+      <div class="input-group my-3">
+        <%= f.label t("title"), class: "input-group-text" %>
+        <%= f.search_field :title_cont, class: "form-control" %>
+        <%= f.label t("tag"), class: "input-group-text" %>
+        <%= f.search_field :tags_name_cont_all, class: "form-control" %>
+        <%= f.label t("status"), class: "input-group-text" %>
+        <%= f.select :status_eq, Mission.statuses.map { |k,v| [Mission.statuses_i18n[k], v] }, { include_blank: ""}, class: "form-select" %>
+        <%= f.submit class: "btn btn-secondary" %>
+      </div>
     <% end %>
-  </tbody>
-</table>
+    <%= link_to t("cancel_search"), otrmbklhufma_user_path(@user), class: "btn btn-outline-secondary mx-2" %>
+  </div>
 
-<div id="paginate">
-  <%= paginate @missions %>
+
+  <table class="table table-hover text-center">
+    <thead>
+      <tr>
+        <th><%= t("author") %></th>
+        <th><%= t("title") %></th>
+        <th><%= t("tag") %></th>
+        <th><%= sort_link(@q, :start_at, t("start_at"), {}, id: "sortStartAt") %></th>
+        <th><%= sort_link(@q, :end_at, t("end_at"), {}, id: "sortEndAt") %></th>
+        <th><%= t("status") %></th>
+        <th><%= sort_link(@q, :priority, t("priority"), {}, id: "sortPriority") %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @missions.each do |mission| %>
+        <tr>
+          <td><%= mission.user.email %></td>
+          <td><%= link_to mission.title, mission_path(mission), class: "text-decoration-none text-info fw-bold" %></td>
+          <td><%= mission.tag_items_view.html_safe %></td>
+          <td><%= mission.start_at.strftime("%Y-%m-%d %H:%M") %></td>
+          <td><%= mission.end_at.strftime("%Y-%m-%d %H:%M") %></td>
+          <td><%= mission.status_i18n %></td>
+          <td><%= mission.priority_i18n %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div id="paginate">
+    <%= paginate @missions %>
+  </div>
 </div>

@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
       session[ENV["user_role"]] = user.role
       session[ENV["user_email"]] = user.email
       session[ENV["user_name"]] = user.email[/^\w+/]
+      cookies[:first_login] = true
 
       redirect_to root_path, notice: t("successfully_sign_in")
     else
@@ -25,6 +26,7 @@ class SessionsController < ApplicationController
     session[ENV["user_role"]] = nil
     session[ENV["user_email"]] = nil
     session[ENV["user_name"]] = nil
+
     redirect_to sign_in_sessions_path, notice: t("successfully_sign_out")
   end
 

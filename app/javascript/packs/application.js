@@ -13,6 +13,7 @@ Turbolinks.start()
 ActiveStorage.start()
 
 import "styles"
+import "missions"
 
 // bootstrap
 import "bootstrap"
