@@ -29,7 +29,7 @@ class MissionsController < ApplicationController
       @mission = Mission.find(params[:id])
       @user = @mission.user
     else
-      @mission = current_user.missions.find(params[:id])
+      @mission = current_user.missions.find_by(id: params[:id]) || current_user.shared_missions.find_by!(id: params[:id])
     end
   rescue ActiveRecord::RecordNotFound
     redirect_to root_path, notice: t("cannot_find_mission")
@@ -68,13 +68,18 @@ class MissionsController < ApplicationController
     end
   end
 
+  def shared_mission_list
+    @q =current_user.shared_missions.ransack(params[:q])
+    @shared_missions = @q.result(distinct: true).includes(:tags, :user).order(created_at: :asc).page(params[:page]).per(25)
+  end
+
   private
   def mission_params
     params.require(:mission).permit(:title, :content, :status, :priority, :start_at, :end_at, { tag_items: [] } )
   end
 
   def find_mission
-    @mission = current_user.missions.find_by!(id: params[:id])
+    @mission = current_user.missions.joins(:taggings).find_by(id: params[:id]) || current_user.shared_missions.find_by!(id: params[:id])
   rescue ActiveRecord::RecordNotFound
     redirect_to root_path, notice: t("cannot_find_mission")
   end

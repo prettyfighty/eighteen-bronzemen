@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root 'missions#index'
 
   resources :missions do
+    collection do
+      get :shared_mission_list
+    end
     member do
       post :share_mission
     end

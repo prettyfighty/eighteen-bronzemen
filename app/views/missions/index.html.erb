@@ -34,6 +34,7 @@
 
   <div>
     <%= link_to t("new_mission"),  new_mission_path, class: "btn btn-danger my-3" %>
+    <%= link_to t("shared_missions"),  shared_mission_list_missions_path, class: "btn btn-outline-primary my-3" %>
   </div>
 
   <div class="d-flex align-items-center">
@@ -55,7 +56,6 @@
   <table class="table table-hover text-center">
     <thead>
       <tr>
-        <th>id</th>
         <th><%= t("title") %></th>
         <th><%= t("tag") %></th>
         <th><%= sort_link(@q, :start_at, t("start_at"), {}, id: "sortStartAt") %></th>
@@ -70,7 +70,6 @@
     <tbody>
       <% @missions.each do |mission| %>
         <tr>
-          <td><%= mission.id %></td>
           <td><%= link_to mission.title, mission_path(mission), class: "text-decoration-none text-info fw-bold" %></td>
           <td><%= mission.tag_items_view.html_safe %></td>
           <td><%= mission.start_at.strftime("%Y-%m-%d %H:%M") %></td>

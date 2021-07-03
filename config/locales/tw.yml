@@ -70,6 +70,8 @@ zh-TW:
   successfully_shared: 分享任務成功
   successfully_deleted_shared_user: 已成功移除該共享使用者
   shared_users: 共享使用者
+  shared_missions: 共享任務
+  shared_missions_list: 共享任務列表
   cannot_self_share: 不能分享給自己
   manage_sharings: 分享管理
 
