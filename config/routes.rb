@@ -3,12 +3,8 @@ Rails.application.routes.draw do
   root 'missions#index'
 
   resources :missions do
-    collection do
-      get :shared_mission_list
-    end
-    member do
-      post :share_mission
-    end
+      get :shared_mission_list, on: :collection
+      post :share_mission, on: :member
   end
 
   resources :users, path: "user", only: [] do
@@ -28,6 +24,15 @@ Rails.application.routes.draw do
 
   namespace :admin, as: "otrmbklhufma" do
     resources :users
+  end
+
+  resources :groups do
+    get :my_group, on: :collection
+    member do
+      post :join_group
+      post :leave_group
+      post :invite_user
+    end
   end
 
 end

@@ -1,0 +1,72 @@
+<div class="container">
+  <%= render 'layouts/navbar' %>
+
+  <h1 class="mb-3 text-center fw-bold"><%= t("my_group") %></h1>
+
+  <div>
+    <%= link_to t("new_group"), new_group_path, class: "btn btn-success my-3" %>
+    <%= link_to t("group_list"), groups_path, class: "btn btn-outline-success my-3" %>
+  </div>
+
+  <div class="d-flex align-items-center">
+    <%= search_form_for @q, url: my_group_groups_path, class: "flex-grow-1" do |f| %>
+      <div class="input-group my-3">
+        <%= f.label t("name"), class: "input-group-text" %>
+        <%= f.search_field :name_cont, class: "form-control" %>
+        <%= f.label t("author"), class: "input-group-text" %>
+        <%= f.search_field :user_email_cont, class: "form-control" %>
+        <%= f.submit class: "btn btn-secondary" %>
+      </div>
+    <% end %>
+    <%= link_to t("cancel_search"), my_group_groups_path, class: "btn btn-outline-secondary mx-2" %>
+  </div>
+
+
+  <table class="table table-hover text-center">
+    <thead>
+      <tr>
+        <th></th>
+        <th><%= t("name") %></th>
+        <th><%= t("author") %></th>
+        <th><%= t("member_number") %></th>
+        <th><%= t("privacy") %></th>
+        <th><%= sort_link(@q, :created_at, t("created_at"), {}, id: "sortGroupCreatedAt") %></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @groups.each_with_index do |group, index| %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= link_to group.name, group_path(group), class: "text-decoration-none text-info fw-bold" %></td>
+          <td><%= group.user.email %></td>
+          <td><%= group.members.size %></td>
+          <td><%= group.privacy_i18n %></td>
+          <td><%= group.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+          <% if group.user.id == session[ENV["session_name"]] %>
+            <td><%= link_to t("edit"), edit_group_path(group), class: "btn btn-outline-primary" %></td>
+            <td><%= link_to t("delete"), group_path(group), method: "delete", data: {confirm: t("confirm_delete")}, class: "btn btn-outline-danger" %></td>
+          <% else %>
+            <td></td>
+            <td><%= link_to t("leave_group"), leave_group_group_path(group), method: "post", data: {confirm: t("confirm_leave")}, class: "btn btn-outline-dark" %></td>
+          <% end %>
+          <td class="position-relative">
+            <span id="inviteUserBtn" class="btn btn-outline-dark" data-group-id="<%= group.id %>"><%= t("invite_user") %></span>
+            <div class="invite-group-content position-absolute p-3">
+              <label class="mb-2 flex-grow-1"><%= t("enter_invite_user_email") %></label>
+              <input type="text" placeholder="example@example.com" class="mb-2" id="inviteUserEmail">
+              <span id="confirmInviteUser" class="btn btn-primary" data-group-id="<%= group.id %>"><%= t('confirm') %></span>
+              <span id="closeInviteUserBtn" class="btn btn-outline-primary mx-2"><%= I18n.t('cancel') %></span>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div id="paginate">
+    <%= paginate @groups %>
+  </div>
+</div>

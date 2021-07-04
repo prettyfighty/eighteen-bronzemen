@@ -1,0 +1,91 @@
+<div class="container">
+  <%= render 'layouts/navbar' %>
+
+  <h1 class="fw-bold mb-3"><%= @group.name %></h1>
+
+  <ul>
+    <li>
+      <span class="fw-bold"><%= "#{t("author")}：" %></span>
+      <%= @group.user.email[/^\w+/] %>
+    </li>
+    <li>
+      <span class="fw-bold"><%= "#{t("privacy")}：" %></span>
+      <%= @group.privacy_i18n %>
+    </li>
+    <li>
+      <span class="fw-bold"><%= "#{t("member_number")}：" %></span>
+      <%= @group.members.size %>
+    </li>
+  </ul>
+
+  <div class="border border-2 my-3 p-3">
+    <%= simple_format(@group.description) %>
+  </div>
+
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="group-tabs">
+      <button class="nav-link active" id="group-member-tab" data-bs-toggle="tab" data-bs-target="#group-member" type="button" role="tab" aria-controls="group-member" aria-selected="true"><%= t("members") %></button>
+    </li>
+    <li class="nav-item" role="group-tabs">
+      <button class="nav-link" id="group-mission-tab" data-bs-toggle="tab" data-bs-target="#group-mission" type="button" role="tab" aria-controls="group-mission" aria-selected="false"><%= t("missions") %></button>
+    </li>
+  </ul>
+  <div class="tab-content mb-5" id="myTabContent">
+    <div class="tab-pane fade show active" id="group-member" role="tabpanel" aria-labelledby="group-member-tab">
+      <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th><%= t("email") %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%  @group.members.order(created_at: :asc).each_with_index do |member, index| %>
+            <tr>
+              <td><%= index + 1 %></td>
+              <td><%= member.email %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="tab-pane fade" id="group-mission" role="tabpanel" aria-labelledby="group-mission-tab">
+      <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th><%= t("title") %></th>
+            <th><%= t("tag") %></th>
+            <th><%= t("start_at") %></th>
+            <th><%= t("end_at") %></th>
+            <th><%= t("status") %></th>
+            <th><%= t("priority") %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%  @group.missions.order(created_at: :asc).each_with_index do |mission,titlex| %>
+            <tr>
+              <td><%= index + 1 %></td>
+              <td><%= mission.title %></td>
+              <td><%= mission.tag_items_view.html_safe %></td>
+              <td><%= mission.start_at.strftime("%Y-%m-%d %H:%M") %></td>
+              <td><%= mission.end_at.strftime("%Y-%m-%d %H:%M") %></td>
+              <td><%= mission.status_i18n %></td>
+              <td><%= mission.priority_i18n %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <div>
+    <%= link_to t("back_to_group_list"), groups_path, class: "btn btn-outline-success" %>
+  </div>
+
+
+
+
+
+</div>

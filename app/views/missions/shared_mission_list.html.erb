@@ -4,7 +4,7 @@
   <h1 class="mb-3 text-center fw-bold"><%= t("shared_missions_list") %></h1>
 
   <div>
-    <%= link_to t("back_to_mission_list"), missions_path, class: "btn btn-outline-primary" %>
+    <%= link_to t("back_to_mission_list"), missions_path, class: "btn btn-outline-danger" %>
   </div>
 
   <div class="d-flex align-items-center">
@@ -19,7 +19,7 @@
         <%= f.submit class: "btn btn-secondary" %>
       </div>
     <% end %>
-    <%= link_to t("cancel_search"), missions_path, class: "btn btn-outline-secondary mx-2" %>
+    <%= link_to t("cancel_search"), shared_mission_list_missions_path, class: "btn btn-outline-secondary mx-2" %>
   </div>
 
 
@@ -48,7 +48,7 @@
           <td><%= mission.end_at.strftime("%Y-%m-%d %H:%M") %></td>
           <td><%= mission.status_i18n %></td>
           <td><%= mission.priority_i18n %></td>
-          <td><%= link_to t("edit"), edit_mission_path(mission), class: "btn btn-outline-success" %></td>
+          <td><%= link_to t("edit"), edit_mission_path(mission), class: "btn btn-outline-primary" %></td>
           <td><%= link_to t("delete"), mission_path(mission), method: "delete", data: {confirm: t("confirm_delete")}, class: "btn btn-outline-danger" %></td>
         </tr>
       <% end %>

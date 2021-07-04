@@ -29,6 +29,10 @@ zh-TW:
         pending: 待處理
         in_progress: 進行中
         done: 已完成
+    group:
+      privacy:
+        public_group: 公開
+        private_group: 不公開
   later_than_now: 開始時間不能晚於現在時間
   later_than_start_at: 結束時間不能晚於開始時間
   cancel_search: 取消搜尋
@@ -74,6 +78,37 @@ zh-TW:
   shared_missions_list: 共享任務列表
   cannot_self_share: 不能分享給自己
   manage_sharings: 分享管理
+  group_list: 群組列表
+  new_group: 新增群組
+  edit_group: 修改群組
+  successfully_create_group: 新增群組成功
+  successfully_update_group: 修改群組成功
+  successfully_delete_group: 刪除群組成功
+  cannot_find_group: 找不到群組
+  my_group: 我的群組
+  name: 名稱
+  privacy: 隱私
+  public_group: 公開
+  private_group: 不公開
+  member_number: 成員數量
+  join_group: 加入群組
+  confirm_join: 是否確認加入?
+  back_to_group_list: 返回群組列表
+  description: 介紹
+  already_joined_group: 您已是該群組成員
+  successfully_joined: 加入群組成功
+  members: 成員
+  missions: 任務
+  confirm_leave: 是否確認退出?
+  successfully_leaved: 退出群組成功
+  not_a_member: 您並非該群組成員
+  invite_user: 邀請成員
+  enter_invite_user_email: 請輸入欲邀請的使用者email
+  user_already_member: 該用戶已是該群組成員
+  successfully_invited: 邀請組員成功
+
+
+
 
 
 
