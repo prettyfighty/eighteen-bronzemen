@@ -49,7 +49,7 @@
           <td><%= mission.status_i18n %></td>
           <td><%= mission.priority_i18n %></td>
           <td><%= link_to t("edit"), edit_mission_path(mission), class: "btn btn-outline-primary" %></td>
-          <td><%= link_to t("delete"), mission_path(mission), method: "delete", data: {confirm: t("confirm_delete")}, class: "btn btn-outline-danger" %></td>
+          <td><%= link_to t("leave_mission"), leave_mission_mission_path(mission), method: "post", data: {confirm: t("confirm_leave")}, class: "btn btn-outline-dark" %></td>
         </tr>
       <% end %>
     </tbody>

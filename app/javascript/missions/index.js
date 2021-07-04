@@ -88,6 +88,7 @@ document.addEventListener("turbolinks:load", function(){
                   })
                   break;
               }
+              e.target.previousElementSibling.value = ''
             },
             failure: function(res){
               console.log(res)
