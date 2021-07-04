@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_group, only: [:edit, :update, :destroy]
+  before_action :find_group, only: [:edit, :update, :destroy, :destroy_member, :destroy_mission]
 
 
   def index
@@ -86,6 +86,26 @@ class GroupsController < ApplicationController
       redirect_to my_group_groups_path, notice: t("successfully_leaved_group")
     else
       redirect_to groups_path, notice: t("group_not_found")
+    end
+  end
+
+  def destroy_member
+    member = @group.members.find_by(id: params[:member_id])
+    if member && @group
+      @group.members.destroy(member)
+      redirect_to group_path(@group), notice: t("successfully_deleted_member")
+    else
+      redirect_to groups_path, notice: t("user_not_found")
+    end
+  end
+
+  def destroy_mission
+    mission = @group.missions.find_by(id: params[:mission_id])
+    if mission && @group
+      @group.missions.destroy(mission)
+      redirect_to group_path(@group), notice: t("successfully_deleted_mission")
+    else
+      redirect_to groups_path, notice: t("user_not_found")
     end
   end
 

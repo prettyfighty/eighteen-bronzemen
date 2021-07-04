@@ -109,13 +109,15 @@ en:
   user_already_member: The user is already the member of the group
   successfully_invited: Member Invited Successfully
   leave_mission: Leave
-  successfully_leaved_mission: 退出任務成功
+  successfully_leaved_mission: Mission Leaved Successfully
   share_with_group: Share with Group
   enter_shared_group_code: Please fill in the group's code that you want to share with / delete from
   group_code: Group Code
   successfully_deleted_shared_group: Mission deleted from the group successfully
   successfully_shared_with_group: Mission shared with the group successfully
   shared_groups: Shared Groups
+  successfully_deleted_member: Deleted Member from Group Successfully
+  successfully_deleted_mission: Deleted Mission from Group Successfully
 
 
 
