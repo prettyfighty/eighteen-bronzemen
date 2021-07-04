@@ -81,13 +81,9 @@ class GroupsController < ApplicationController
 
   def leave_group
     group = Group.find(params[:id])
-    if group
-      if current_user.joined_groups.exists?(group.id)
-        current_user.joined_groups.destroy(group)
-        redirect_to my_group_groups_path, notice: t("successfully_leaved")
-      else
-        redirect_to my_group_groups_path, notice: t("not_a_member")
-      end
+    if group && current_user.joined_groups.exists?(group.id)
+      current_user.joined_groups.destroy(group)
+      redirect_to my_group_groups_path, notice: t("successfully_leaved_group")
     else
       redirect_to groups_path, notice: t("cannot_find_group")
     end

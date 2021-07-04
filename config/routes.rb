@@ -4,7 +4,11 @@ Rails.application.routes.draw do
 
   resources :missions do
       get :shared_mission_list, on: :collection
-      post :share_mission, on: :member
+      member do
+        get :share_with_group
+        post :share_mission
+        post :leave_mission
+      end
   end
 
   resources :users, path: "user", only: [] do

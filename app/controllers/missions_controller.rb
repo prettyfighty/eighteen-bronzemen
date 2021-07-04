@@ -1,6 +1,6 @@
 class MissionsController < ApplicationController
 
-  before_action :find_mission, only: [:edit, :update, :destroy, :share_mission]
+  before_action :find_mission, only: [:edit, :update, :share_mission]
   before_action :authenticate_user!
   after_action :clean_cookies, only: [:index]
 
@@ -47,8 +47,11 @@ class MissionsController < ApplicationController
   end
 
   def destroy
+    @mission = current_user.missions.find_by!(id: params[:id])
     @mission.destroy
     redirect_to missions_path, notice: t("successfully_delete_mission")
+  rescue ActiveRecord::RecordNotFound
+    redirect_to missions_path, notice: t("cannot_find_mission")
   end
 
   def share_mission
@@ -71,6 +74,16 @@ class MissionsController < ApplicationController
   def shared_mission_list
     @q =current_user.shared_missions.ransack(params[:q])
     @shared_missions = @q.result(distinct: true).includes(:tags, :user).order(created_at: :asc).page(params[:page]).per(25)
+  end
+
+  def leave_mission
+    mission = Mission.find(params[:id])
+    if mission && current_user.shared_missions.exists?(mission.id)
+      current_user.shared_missions.destroy(mission)
+      redirect_to missions_path, notice: t("successfully_leaved_mission")
+    else
+      redirect_to missions_path, notice: t("cannot_find_mission")
+    end
   end
 
   private

@@ -100,12 +100,16 @@ zh-TW:
   members: 成員
   missions: 任務
   confirm_leave: 是否確認退出?
-  successfully_leaved: 退出群組成功
+  leave_group: 退出群組
+  successfully_leaved_group: 退出群組成功
   not_a_member: 您並非該群組成員
   invite_user: 邀請成員
   enter_invite_user_email: 請輸入欲邀請的使用者email
   user_already_member: 該用戶已是該群組成員
   successfully_invited: 邀請組員成功
+  leave_mission: 退出共享任務
+  successfully_leaved_mission: 退出任務成功
+  share_with_group: 分享到群組
 
 
 

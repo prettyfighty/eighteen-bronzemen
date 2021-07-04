@@ -100,12 +100,16 @@ en:
   members: Members
   missions: Missions
   confirm_leave: Are you sure to LEAVE?
-  successfully_leaved: Leaved Successfully
+  leave_group: Leave Group
+  successfully_leaved_group: Leaved Successfully
   not_a_member: You are not a member of the group
   invite_user: Invite Users
   enter_invite_user_email: Please fill in the user's email that you want to invite
   user_already_member: The user is already the member of the group
   successfully_invited: Member Invited Successfully
+  leave_mission: Leave
+  successfully_leaved_mission: 退出任務成功
+  share_with_group: Share with Group
 
 
 
