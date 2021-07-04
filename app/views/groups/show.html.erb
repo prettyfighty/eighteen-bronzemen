@@ -42,14 +42,20 @@
             <th></th>
             <th><%= t("email") %></th>
             <th><%= t("created_at") %></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
-          <%  @group.members.order(created_at: :asc).each_with_index do |member, index| %>
+          <% @group.members.order(created_at: :asc).each_with_index do |member, index| %>
             <tr>
               <td><%= index + 1 %></td>
               <td><%= member.email %></td>
               <td><%= member.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+              <% if @group.user.id == session[ENV["session_name"]] %>
+                <td><%= link_to t("delete"), destroy_member_group_path(@group, member_id: member.id), method: "post", data: {confirm: t("confirm_delete")}, class: "btn btn-outline-danger" %></td>
+              <% else %>
+                <td></td>
+              <% end %>
             </tr>
           <% end %>
         </tbody>
@@ -66,6 +72,7 @@
             <th><%= t("end_at") %></th>
             <th><%= t("status") %></th>
             <th><%= t("priority") %></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -78,6 +85,11 @@
               <td><%= mission.end_at.strftime("%Y-%m-%d %H:%M") %></td>
               <td><%= mission.status_i18n %></td>
               <td><%= mission.priority_i18n %></td>
+              <% if @group.user.id == session[ENV["session_name"]] %>
+                <td><%= link_to t("delete"), destroy_mission_group_path(@group, mission_id: mission.id), method: "post", data: {confirm: t("confirm_delete")}, class: "btn btn-outline-danger" %></td>
+              <% else %>
+                <td></td>
+              <% end %>
             </tr>
           <% end %>
         </tbody>

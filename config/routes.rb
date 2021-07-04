@@ -36,6 +36,8 @@ Rails.application.routes.draw do
       post :join_group
       post :leave_group
       post :invite_user
+      post :destroy_member
+      post :destroy_mission
     end
   end
 
