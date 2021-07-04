@@ -1,0 +1,13 @@
+#inviteUserBtn {
+  position: relative;
+}
+.invite-group-content {
+  display: none;
+  flex-wrap: wrap;
+  z-index: 10;
+  background-color: #fff;
+  border: 1px solid #aaf;
+  border-radius: .5rem;
+  top: 3rem;
+  right: 0;
+}

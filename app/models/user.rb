@@ -3,6 +3,9 @@ class User < ApplicationRecord
   has_many :missions, dependent: :destroy
   has_many :sharings, dependent: :destroy
   has_many :shared_missions, through: :sharings, source: :mission
+  has_many :groups, dependent: :destroy
+  has_many :memberships, dependent: :destroy
+  has_many :joined_groups, through: :memberships, source: :group
 
   validates :email, presence: true, uniqueness: true, format: { with: /.+\@.+\..+/ }
   validates :password, presence: true, confirmation: true

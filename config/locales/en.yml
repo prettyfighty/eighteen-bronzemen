@@ -13,7 +13,7 @@ en:
   edit: Edit
   share: Share
   delete: Delete
-  confirm_delete: Are you sure?
+  confirm_delete: Are you sure to DELETE?
   content: Content
   successfully_create_mission: Mission Created Successfully
   successfully_update_mission: Mission Edited Successfully
@@ -29,6 +29,10 @@ en:
         pending: Pending
         in_progress: In Progress
         done: Done
+    group:
+      privacy:
+        public_group: Public
+        private_group: Private
   later_than_now: Start-time should be later than now
   later_than_start_at: End-time should be later than start-time
   cancel_search: Cancel Search
@@ -74,6 +78,38 @@ en:
   shared_missions_list: Sharing Missions List
   cannot_self_share: You can not share a mission with yourself
   manage_sharings: Manage Sharings
+  group_list: Group List
+  new_group: Create Group
+  edit_group: Edit Group
+  successfully_create_group: Group Created Successfully
+  successfully_update_group: Group Edited Successfully
+  successfully_delete_group: Group Deleted
+  cannot_find_group: Can not find group
+  my_group: My Group
+  name: Name
+  privacy: Privacy
+  public_group: Public
+  private_group: Private
+  member_number: Number of Members
+  join_group: Join Group
+  confirm_join: Are you sure to JOIN?
+  back_to_group_list: Back to Group List
+  description: Description
+  already_joined_group: You are already the member of the group
+  successfully_joined: Joined Successfully
+  members: Members
+  missions: Missions
+  confirm_leave: Are you sure to LEAVE?
+  successfully_leaved: Leaved Successfully
+  not_a_member: You are not a member of the group
+  invite_user: Invite Users
+  enter_invite_user_email: Please fill in the user's email that you want to invite
+  user_already_member: The user is already the member of the group
+  successfully_invited: Member Invited Successfully
+
+
+
+
 
 
 # --- #  rails-i18n https://github.com/svenfuchs/rails-i18n/tree/master/rails/locale/

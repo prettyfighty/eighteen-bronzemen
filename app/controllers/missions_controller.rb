@@ -18,7 +18,7 @@ class MissionsController < ApplicationController
     @mission = current_user.missions.new(mission_params)
 
     if @mission.save
-      redirect_to root_path, notice: t("successfully_create_mission")
+      redirect_to missions_path, notice: t("successfully_create_mission")
     else
       render :new
     end
@@ -32,7 +32,7 @@ class MissionsController < ApplicationController
       @mission = current_user.missions.find_by(id: params[:id]) || current_user.shared_missions.find_by!(id: params[:id])
     end
   rescue ActiveRecord::RecordNotFound
-    redirect_to root_path, notice: t("cannot_find_mission")
+    redirect_to missions_path, notice: t("cannot_find_mission")
   end
 
   def edit
@@ -40,7 +40,7 @@ class MissionsController < ApplicationController
 
   def update
     if @mission.update(mission_params)
-      redirect_to root_path, notice: t("successfully_update_mission")
+      redirect_to missions_path, notice: t("successfully_update_mission")
     else
       render :edit
     end
@@ -48,7 +48,7 @@ class MissionsController < ApplicationController
 
   def destroy
     @mission.destroy
-    redirect_to root_path, notice: t("successfully_delete_mission")
+    redirect_to missions_path, notice: t("successfully_delete_mission")
   end
 
   def share_mission
@@ -79,9 +79,9 @@ class MissionsController < ApplicationController
   end
 
   def find_mission
-    @mission = current_user.missions.joins(:taggings).find_by(id: params[:id]) || current_user.shared_missions.find_by!(id: params[:id])
+    @mission = current_user.missions.find_by(id: params[:id]) || current_user.shared_missions.find_by!(id: params[:id])
   rescue ActiveRecord::RecordNotFound
-    redirect_to root_path, notice: t("cannot_find_mission")
+    redirect_to missions_path, notice: t("cannot_find_mission")
   end
 
   def clean_cookies

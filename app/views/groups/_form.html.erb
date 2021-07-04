@@ -1,0 +1,14 @@
+<% if group.errors.any? %>
+  <ul>
+    <% group.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= simple_form_for(group) do |f| %>
+  <%= f.input :name, label: t("name"), input_html: {class: "form-control"} %>
+  <%= f.input :description, label: t("description"), input_html: {class: "form-control"} %>
+  <%= f.input :privacy, label: t("privacy"), collection: Group.privacies_i18n, input_html: {class: "form-control"} %>
+  <%= f.button :submit, class: "btn btn-success my-3" %>
+<% end %>

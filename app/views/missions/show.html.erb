@@ -39,7 +39,7 @@
   </div>
 
   <div>
-    <%= link_to t("back_to_mission_list"), missions_path, class: "btn btn-outline-primary" %>
+    <%= link_to t("back_to_mission_list"), missions_path, class: "btn btn-outline-danger" %>
     <% if admin? %>
       <%= link_to t("back_to_user_mission_list"), otrmbklhufma_user_path(@user), class: "btn btn-outline-secondary" %>
     <% end %>

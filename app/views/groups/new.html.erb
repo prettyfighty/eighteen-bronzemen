@@ -1,0 +1,11 @@
+<div class="container">
+  <%= render 'layouts/navbar' %>
+
+  <h1 class="mb-3 text-center fw-bold"><%= t("new_group") %></h1>
+
+  <%= render 'form', group: @group %>
+
+  <div>
+    <%= link_to t("back_to_group_list"), groups_path, class: "btn btn-outline-success" %>
+  </div>
+</div>

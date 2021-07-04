@@ -3,12 +3,12 @@
   color: rgb(211, 1, 1);
 }
 
-#sortStartAt, #sortEndAt, #sortPriority, #sortUserId, #sortUserEmail, #sortUserCreatedAt {
+#sortStartAt, #sortEndAt, #sortPriority, #sortUserId, #sortUserEmail, #sortUserCreatedAt, #sortGroupCreatedAt {
   text-decoration: none;
   color: #000;
 }
 
-#sortStartAt:hover, #sortEndAt:hover, #sortPriority:hover, #sortUserId:hover, #sortUserEmail:hover, #sortUserCreatedAt:hover {
+#sortStartAt:hover, #sortEndAt:hover, #sortPriority:hover, #sortUserId:hover, #sortUserEmail:hover, #sortUserCreatedAt:hover, #sortGroupCreatedAt:hover {
   color: #888;
 }
 
