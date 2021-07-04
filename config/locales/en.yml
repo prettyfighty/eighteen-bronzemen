@@ -18,7 +18,7 @@ en:
   successfully_create_mission: Mission Created Successfully
   successfully_update_mission: Mission Edited Successfully
   successfully_delete_mission: Mission Deleted
-  cannot_find_mission: Cannot Find Any Mission
+  mission_not_found: Mission Not Found
   enums:
     mission:
       priority:
@@ -68,8 +68,8 @@ en:
   only_one_admin: There must be at least one admin
   confirm: Confirm
   cancel: Cancel
-  enter_shared_user_email: Please fill in the user's email that you want to share with / delete
-  user_not_found: Cannot find the user
+  enter_shared_user_email: Please fill in the user's email that you want to share with / delete from
+  user_not_found: User Not Found
   already_shared_user: The mission has already been shared with the user
   successfully_shared: Mission shared successfully
   successfully_deleted_shared_user: Shared User Deleted
@@ -84,13 +84,14 @@ en:
   successfully_create_group: Group Created Successfully
   successfully_update_group: Group Edited Successfully
   successfully_delete_group: Group Deleted
-  cannot_find_group: Can not find group
+  group_not_found: Group Not Found
   my_group: My Group
   name: Name
   privacy: Privacy
   public_group: Public
   private_group: Private
-  member_number: Number of Members
+  member_number: Members
+  mission_number: Missions
   join_group: Join Group
   confirm_join: Are you sure to JOIN?
   back_to_group_list: Back to Group List
@@ -110,6 +111,11 @@ en:
   leave_mission: Leave
   successfully_leaved_mission: 退出任務成功
   share_with_group: Share with Group
+  enter_shared_group_code: Please fill in the group's code that you want to share with / delete from
+  group_code: Group Code
+  successfully_deleted_shared_group: Mission deleted from the group successfully
+  successfully_shared_with_group: Mission shared with the group successfully
+  shared_groups: Shared Groups
 
 
 

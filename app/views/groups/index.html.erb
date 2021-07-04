@@ -29,6 +29,7 @@
         <th><%= t("name") %></th>
         <th><%= t("author") %></th>
         <th><%= t("member_number") %></th>
+        <th><%= t("mission_number") %></th>
         <th><%= sort_link(@q, :created_at, t("created_at"), {}, id: "sortGroupCreatedAt") %></th>
         <th></th>
         <th></th>
@@ -42,7 +43,8 @@
           <td><%= link_to group.name, group_path(group), class: "text-decoration-none text-info fw-bold" %></td>
           <td><%= group.user.email %></td>
           <td><%= group.members.size %></td>
-          <td><%= group.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+          <td><%= group.missions.size %></td>
+          <td><%= group.created_at.strftime("%Y-%m-%d") %></td>
           <% if group.user.id == session[ENV["session_name"]] %>
             <td><%= link_to t("edit"), edit_group_path(group), class: "btn btn-outline-primary" %></td>
             <td><%= link_to t("delete"), group_path(group), method: "delete", data: {confirm: t("confirm_delete")}, class: "btn btn-outline-danger" %></td>

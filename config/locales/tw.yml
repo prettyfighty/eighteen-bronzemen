@@ -18,7 +18,7 @@ zh-TW:
   successfully_create_mission: 新增任務成功
   successfully_update_mission: 修改任務成功
   successfully_delete_mission: 刪除任務成功
-  cannot_find_mission: 找不到任務
+  mission_not_found: 找不到任務
   enums:
     mission:
       priority:
@@ -69,7 +69,7 @@ zh-TW:
   confirm: 確定
   cancel: 取消
   enter_shared_user_email: 請輸入欲「分享」或「刪除」的使用者email
-  user_not_found: 找不到該使用者
+  user_not_found: 找不到使用者
   already_shared_user: 該用戶已為此任務的共享使用者
   successfully_shared: 分享任務成功
   successfully_deleted_shared_user: 已成功移除該共享使用者
@@ -84,13 +84,14 @@ zh-TW:
   successfully_create_group: 新增群組成功
   successfully_update_group: 修改群組成功
   successfully_delete_group: 刪除群組成功
-  cannot_find_group: 找不到群組
+  group_not_found: 找不到群組
   my_group: 我的群組
   name: 名稱
   privacy: 隱私
   public_group: 公開
   private_group: 不公開
-  member_number: 成員數量
+  member_number: 成員數
+  mission_number: 任務數
   join_group: 加入群組
   confirm_join: 是否確認加入?
   back_to_group_list: 返回群組列表
@@ -110,6 +111,11 @@ zh-TW:
   leave_mission: 退出共享任務
   successfully_leaved_mission: 退出任務成功
   share_with_group: 分享到群組
+  enter_shared_group_code: 請輸入欲「分享」或「刪除」的群組編碼
+  group_code: 群組編碼
+  successfully_deleted_shared_group: 成功將任務從該群組刪除
+  successfully_shared_with_group: 成功將任務新增至該群組
+  shared_groups: 共享群組
 
 
 

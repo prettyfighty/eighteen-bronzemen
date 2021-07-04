@@ -5,7 +5,7 @@ class GroupsController < ApplicationController
 
   def index
     @q = Group.public_group.ransack(params[:q])
-    @groups = @q.result(distinct: true).includes(:user, :members).order(created_at: :asc).page(params[:page]).per(25)
+    @groups = @q.result(distinct: true).includes(:user, :members, :missions).order(created_at: :asc).page(params[:page]).per(25)
   end
 
   def new
@@ -24,9 +24,9 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @group = Group.public_group.includes(:members).find_by(id: params[:id]) || current_user.groups.includes(:members).find_by(id: params[:id]) || current_user.joined_groups.includes(:members).find_by!(id: params[:id])
+    @group = Group.public_group.find_by(id: params[:id]) || current_user.groups.find_by(id: params[:id]) || current_user.joined_groups.find_by!(id: params[:id])
   rescue ActiveRecord::RecordNotFound
-    redirect_to groups_path, notice: t("cannot_find_group")
+    redirect_to groups_path, notice: t("group_not_found")
   end
 
   def edit
@@ -47,7 +47,7 @@ class GroupsController < ApplicationController
 
   def my_group
     @q = current_user.joined_groups.ransack(params[:q])
-    @groups = @q.result(distinct: true).includes(:user, :members).order(created_at: :asc).page(params[:page]).per(25)
+    @groups = @q.result(distinct: true).includes(:user, :members, :missions).order(created_at: :asc).page(params[:page]).per(25)
   end
 
   def join_group
@@ -60,7 +60,7 @@ class GroupsController < ApplicationController
         redirect_to groups_path, notice: t("successfully_joined")
       end
     else
-      redirect_to groups_path, notice: t("cannot_find_group")
+      redirect_to groups_path, notice: t("group_not_found")
     end
   end
 
@@ -85,7 +85,7 @@ class GroupsController < ApplicationController
       current_user.joined_groups.destroy(group)
       redirect_to my_group_groups_path, notice: t("successfully_leaved_group")
     else
-      redirect_to groups_path, notice: t("cannot_find_group")
+      redirect_to groups_path, notice: t("group_not_found")
     end
   end
 
@@ -97,7 +97,7 @@ class GroupsController < ApplicationController
   def find_group
     @group = current_user.groups.find_by!(id: params[:id])
   rescue ActiveRecord::RecordNotFound
-    redirect_to groups_path, notice: t("cannot_find_group")
+    redirect_to groups_path, notice: t("group_not_found")
   end
 
 

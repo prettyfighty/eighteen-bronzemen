@@ -10,27 +10,15 @@ document.addEventListener("turbolinks:load", function(){
   let closeShareMissionBtn = document.querySelectorAll('#closeShareMissionBtn')
   let confirmSharedUser = document.querySelectorAll('#confirmSharedUser')
   let sharedUserEmail = document.querySelectorAll('#sharedUserEmail')
-
-  // 驗證表單 必填
-  function validateInputPresence (e) {
-    let fErrorSpan = document.createElement('SPAN')
-    fErrorSpan.classList.add('error')
-    fErrorSpan.textContent = '必填'
-    if (e.target.value == '' && e.target.classList.toString().indexOf('border-red-400') == -1){
-      e.target.classList.add('border-red-400')
-      e.target.parentElement.appendChild(fErrorSpan)
-    } else if (e.target.value != '' && e.target.classList.contains('border-red-400')) {
-      e.target.classList.remove('border-red-400')
-      e.target.parentElement.removeChild(e.target.parentElement.lastElementChild)
-    }
-  }
+  let confirmSharedGroup = document.querySelectorAll('#confirmSharedGroup')
+  let sharedGroupCode = document.querySelectorAll('#sharedGroupCode')
 
   // 驗證表單 Email 格式
   function validateInputEmail (e) {
     let emailReg = new RegExp(/(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/)
     let fEmailErrorSpan = document.createElement('SPAN')
     fEmailErrorSpan.classList.add('error')
-    fEmailErrorSpan.textContent = '請輸入正確的Email格式'
+    fEmailErrorSpan.textContent = 'Email格式不正確'
     if (emailReg.test(e.target.value) == false && e.target.classList.toString().indexOf('border-red-400') == -1){
       e.target.classList.add('border-red-400')
       e.target.parentElement.appendChild(fEmailErrorSpan)
@@ -40,12 +28,59 @@ document.addEventListener("turbolinks:load", function(){
     }
   }
 
+  // 分享任務到群組
+  if (confirmSharedGroup) {
+    for (let i = 0; i < confirmSharedGroup.length; i++) {
+      confirmSharedGroup[i].addEventListener("click", function(e){
+        let missionId = e.target.dataset.missionId
+        let inputCode = e.target.parentElement.previousElementSibling.value
+        if (inputCode != '') {
+          Rails.ajax({
+            url: `/missions/${missionId}/share_with_group`,
+            type: 'post',
+            data: `code=${inputCode}`,
+            success: function(res){
+              switch (res.status) {
+                case "shared":
+                  Swal.fire({
+                    icon: 'success',
+                    title: `${res.message}`,
+                  })
+                  break;
+                case "delete":
+                  Swal.fire({
+                    icon: 'success',
+                    title: `${res.message}`,
+                  })
+                  break;
+                case "not_found":
+                  Swal.fire({
+                    icon: 'error',
+                    title: `${res.message}`,
+                  })
+                  break;
+              }
+              e.target.parentElement.previousElementSibling.value = ''
+            },
+            failure: function(res){
+              console.log(res)
+            }
+          })
+        }
+      })
+    }
+  }
+
   // 輸入email簡易判斷
   if (sharedUserEmail) {
     for (let i = 0; i < sharedUserEmail.length; i++) {
       sharedUserEmail[i].addEventListener('blur', function(e){
-        validateInputPresence(e)
-        validateInputEmail(e)
+        if (sharedUserEmail[i].value != '') {
+          validateInputEmail(e)
+        } else if (sharedUserEmail[i].value == '' && e.target.classList.contains('border-red-400')) {
+          e.target.classList.remove('border-red-400')
+          e.target.parentElement.removeChild(e.target.parentElement.lastElementChild)
+        }
       })
     }
   }
@@ -55,7 +90,7 @@ document.addEventListener("turbolinks:load", function(){
     for (let i = 0; i < confirmSharedUser.length; i++) {
       confirmSharedUser[i].addEventListener("click", function(e){
         let missionId = e.target.dataset.missionId
-        let inputEmail = e.target.previousElementSibling.value
+        let inputEmail = e.target.parentElement.previousElementSibling.value
         if (inputEmail != '') {
           Rails.ajax({
             url: `/missions/${missionId}/share_mission`,
@@ -88,7 +123,7 @@ document.addEventListener("turbolinks:load", function(){
                   })
                   break;
               }
-              e.target.previousElementSibling.value = ''
+              e.target.parentElement.previousElementSibling.value = ''
             },
             failure: function(res){
               console.log(res)
