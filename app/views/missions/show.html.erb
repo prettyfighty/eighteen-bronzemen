@@ -32,6 +32,12 @@
       <span class="fw-bold"><%= "#{t("shared_users")}：" %></span>
       <%= @mission.shared_users.map(&:email).join(', ') %>
     </li>
+    <li>
+      <span class="fw-bold"><%= "#{t("shared_groups")}：" %></span>
+      <% @mission.groups.each do |group| %>
+        <%= link_to group.name, group_path(group), class: "text-decoration-none border border-primary rounded px-2 " %>
+      <% end %>
+    </li>
   </ul>
 
   <div class="border border-2 my-3 p-3">
@@ -40,6 +46,7 @@
 
   <div>
     <%= link_to t("back_to_mission_list"), missions_path, class: "btn btn-outline-danger" %>
+    <%= link_to t("back_to_group_list"), groups_path, class: "btn btn-outline-success" %>
     <% if admin? %>
       <%= link_to t("back_to_user_mission_list"), otrmbklhufma_user_path(@user), class: "btn btn-outline-secondary" %>
     <% end %>

@@ -80,12 +80,21 @@
           <td><%= link_to t("delete"), mission_path(mission), method: "delete", data: {confirm: t("confirm_delete")}, class: "btn btn-outline-danger" %></td>
           <td class="position-relative">
             <span id="shareMissionBtn" class="btn btn-outline-dark" data-mission-id="<%= mission.id %>"><%= t("manage_sharings") %></span>
-            <div class="share-mission-content position-absolute p-3">
-              <div class="d-flex flex-wrap">
+            <div class="share-mission-content position-absolute p-3 text-start">
+              <div class="d-flex flex-wrap mb-3">
                 <label class="mb-2 flex-grow-1"><%= t("enter_shared_user_email") %></label>
                 <input type="text" placeholder="example@example.com" class="mb-2 flex-grow-1" id="sharedUserEmail">
-                <span id="confirmSharedUser" class="btn btn-primary" data-mission-id="<%= mission.id %>"><%= t('confirm') %></span>
-                <span id="closeShareMissionBtn" class="btn btn-outline-primary mx-2"><%= I18n.t('cancel') %></span>
+                  <div class="btn-group text-nowrap">
+                    <span id="confirmSharedUser" class="btn btn-primary" data-mission-id="<%= mission.id %>"><%= t('confirm') %></span>
+                    <span id="closeShareMissionBtn" class="btn btn-outline-primary mx-2"><%= I18n.t('cancel') %></span>
+                  </div>
+              </div>
+              <div class="d-flex flex-wrap mb-3">
+                <label class="mb-2 flex-grow-1"><%= t("enter_shared_group_code") %></label>
+                <input type="text" placeholder="Ex-am_pLe" class="mb-2 flex-grow-1" id="sharedGroupCode">
+                  <div class="btn-group text-nowrap">
+                    <span id="confirmSharedGroup" class="btn btn-success" data-mission-id="<%= mission.id %>"><%= t('share_with_group') %></span>
+                  </div>
               </div>
             </div>
           </td>

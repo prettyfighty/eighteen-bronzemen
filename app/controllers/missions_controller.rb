@@ -25,14 +25,14 @@ class MissionsController < ApplicationController
   end
 
   def show
-    if admin?
+    if admin? || current_user.joined_groups.joins(:missions).merge(Mission.where(id: params[:id])).present?
       @mission = Mission.find(params[:id])
       @user = @mission.user
     else
       @mission = current_user.missions.find_by(id: params[:id]) || current_user.shared_missions.find_by!(id: params[:id])
     end
   rescue ActiveRecord::RecordNotFound
-    redirect_to missions_path, notice: t("cannot_find_mission")
+    redirect_to missions_path, notice: t("mission_not_found")
   end
 
   def edit
@@ -51,7 +51,7 @@ class MissionsController < ApplicationController
     @mission.destroy
     redirect_to missions_path, notice: t("successfully_delete_mission")
   rescue ActiveRecord::RecordNotFound
-    redirect_to missions_path, notice: t("cannot_find_mission")
+    redirect_to missions_path, notice: t("mission_not_found")
   end
 
   def share_mission
@@ -82,7 +82,23 @@ class MissionsController < ApplicationController
       current_user.shared_missions.destroy(mission)
       redirect_to missions_path, notice: t("successfully_leaved_mission")
     else
-      redirect_to missions_path, notice: t("cannot_find_mission")
+      redirect_to missions_path, notice: t("mission_not_found")
+    end
+  end
+
+  def share_with_group
+    mission = current_user.missions.find_by(id: params[:id])
+    group = current_user.joined_groups.find_by(code: params[:code])
+    if mission && group
+      if group.missions.exists?(mission.id)
+        group.missions.destroy(mission)
+        render json: { status: "delete", message: I18n.t("successfully_deleted_shared_group") }
+      else
+        group.missions << mission
+        render json: { status: "shared", message: I18n.t("successfully_shared_with_group") }
+      end
+    else
+      render json: { status: "not_found", message: I18n.t("group_not_found") }
     end
   end
 
@@ -94,7 +110,7 @@ class MissionsController < ApplicationController
   def find_mission
     @mission = current_user.missions.find_by(id: params[:id]) || current_user.shared_missions.find_by!(id: params[:id])
   rescue ActiveRecord::RecordNotFound
-    redirect_to missions_path, notice: t("cannot_find_mission")
+    redirect_to missions_path, notice: t("mission_not_found")
   end
 
   def clean_cookies
