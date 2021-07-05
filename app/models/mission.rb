@@ -16,6 +16,7 @@ class Mission < ApplicationRecord
   validates :end_at, presence: true
   validate :check_end_at
 
+  mount_uploader :file, FileUploader
 
   def self.tagged_with(name)
     Tag.find_by!(name: name).missions

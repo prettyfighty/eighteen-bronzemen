@@ -1,7 +1,15 @@
+# HTTP Basic Authenticate
 basic_authenticate_name: your_name
 basic_authenticate_password: your_password
+
+
+# User Login
 session_name: your_session_name
 user_role: current_user_role
 user_email: current_user_email
 user_name: current_user_name
 
+# AWS 相關
+aws_access_key_id: your_aws_access_key_id
+aws_secret_access_key: your_aws_secret_access_key
+s3_bucket_name: your_s3_bucket_name

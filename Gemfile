@@ -70,5 +70,8 @@ gem 'enum_help', '~> 0.0.17'
 gem 'ransack', '~> 2.4', '>= 2.4.2'
 # paginator
 gem 'kaminari', '~> 1.2', '>= 1.2.1'
+# upload files
+gem 'carrierwave', '~> 2.2', '>= 2.2.2'
+gem 'fog-aws', '~> 3.10'
 
 

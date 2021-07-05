@@ -29,6 +29,12 @@
       <%= @mission.end_at.strftime("%Y-%m-%d %H:%M") %>
     </li>
     <li>
+      <span class="fw-bold"><%= "#{t("attachment")}：" %></span>
+      <a href="<%= @mission.file.url %>" class="text-decoration-none text-secondary border border-secondary rounded px-1" target="_blank" download>
+        <%= @mission.file.identifier %>
+      </a>
+    </li>
+    <li>
       <span class="fw-bold"><%= "#{t("shared_users")}：" %></span>
       <%= @mission.shared_users.map(&:email).join(', ') %>
     </li>
