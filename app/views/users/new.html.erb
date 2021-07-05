@@ -6,7 +6,7 @@
   <div class="d-flex justify-content-center align-items-center">
     <div class="user-form-container mt-5 border border-dark p-5">
       <%= simple_form_for @user, url: sign_up_users_path do |f| %>
-      <div class="avatar text-center mb-3">
+        <div class="avatar text-center mb-3">
           <label class="upload-avatar-label rounded-circle overflow-hidden">
             <%= (@user.avatar?) ? image_tag(@user.avatar_url, size: "170x170", id: "userAvatar") : image_tag("/images/default_avatar.png", size: "170x170", id: "userAvatar") %>
             <%= f.input :avatar, as: :file, label: false, input_html: {class: "upload-avatar-input"} %>
