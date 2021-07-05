@@ -11,7 +11,7 @@ Rails.application.routes.draw do
       end
   end
 
-  resources :users, path: "user", only: [] do
+  resources :users, path: "user", only: [:edit, :update] do
     collection do
       get :sign_up, action: 'new'
       post :sign_up, action: 'create'

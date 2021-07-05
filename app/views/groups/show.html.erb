@@ -5,7 +5,7 @@
 
   <ul>
     <li>
-      <span class="fw-bold"><%= "#{t("author")}：" %></span>
+      <span class="fw-bold"><%= "#{t("group_leader")}：" %></span>
       <%= @group.user.email[/^\w+/] %>
     </li>
     <li>
@@ -40,6 +40,7 @@
         <thead>
           <tr>
             <th></th>
+            <th></th>
             <th><%= t("email") %></th>
             <th><%= t("created_at") %></th>
             <th></th>
@@ -49,6 +50,11 @@
           <% @group.members.order(created_at: :asc).each_with_index do |member, index| %>
             <tr>
               <td><%= index + 1 %></td>
+              <td>
+                <label class="avatar-label overflow-hidden rounded-circle">
+                  <%= (member.avatar?) ? image_tag(member.avatar_url, size: "40x40", id: "userAvatarThumb") : image_tag("/images/default_avatar.png", size: "40x40", id: "userAvatarThumb") %>
+                </label>
+              </td>
               <td><%= member.email %></td>
               <td><%= member.created_at.strftime("%Y-%m-%d %H:%M") %></td>
               <% if @group.user.id == session[ENV["session_name"]] %>
@@ -66,6 +72,7 @@
         <thead>
           <tr>
             <th></th>
+            <th><%= t("author") %></th>
             <th><%= t("title") %></th>
             <th><%= t("tag") %></th>
             <th><%= t("start_at") %></th>
@@ -79,6 +86,7 @@
           <%  @group.missions.order(created_at: :asc).each_with_index do |mission,index| %>
             <tr>
               <td><%= index + 1 %></td>
+              <td><%= mission.user.email %></td>
               <td><%= link_to mission.title, mission_path(mission), class: "text-decoration-none text-info fw-bold" %></td>
               <td><%= mission.tag_items_view.html_safe %></td>
               <td><%= mission.start_at.strftime("%Y-%m-%d %H:%M") %></td>

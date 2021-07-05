@@ -5,7 +5,13 @@
   </div>
   <div>
     <% if user_signed_in? %>
-      <span id="helloUser" class="btn text-secondary fw-bold"><%= "Hello, #{session[ENV["user_name"]]}" %></span>
+      <span id="helloUser" class="btn text-secondary fw-bold">
+        <%= "Hello, #{session[ENV["user_name"]]}" %>
+      </span>
+      <label class="avatar-label overflow-hidden rounded-circle">
+        <%= (current_user.avatar?) ? image_tag(current_user.avatar_url, size: "40x40", id: "userAvatarThumb") : image_tag("/images/default_avatar.png", size: "40x40", id: "userAvatarThumb") %>
+      </label>
+      <%= link_to t("manage_account"), edit_user_path(session[ENV["session_name"]]), class:"btn btn-light" %>
       <%= link_to t("mission_list"), missions_path, class:"btn btn-light" %>
       <%= link_to t("group_list"),  groups_path, class:"btn btn-light" %>
       <%= link_to t("admin_page"), otrmbklhufma_users_path, class: "btn btn-light" %>
