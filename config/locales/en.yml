@@ -118,8 +118,8 @@ en:
   shared_groups: Shared Groups
   successfully_deleted_member: Deleted Member from Group Successfully
   successfully_deleted_mission: Deleted Mission from Group Successfully
-  upload_file: Select the file you want to upload
-  attachment: Attachment：（Size Limit：8 MB）
+  upload_file: Select the file you want to upload：（Size Limit：6 MB）
+  attachment: Attachment
 
 
 
