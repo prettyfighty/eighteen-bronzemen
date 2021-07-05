@@ -118,6 +118,8 @@ zh-TW:
   shared_groups: 共享群組
   successfully_deleted_member: 刪除組員成功
   successfully_deleted_mission: 移除任務成功
+  upload_file: 選擇要上傳的檔案：（大小限制：8 MB）
+  attachment: 附加檔案
 
 
 
@@ -248,6 +250,17 @@ zh-TW:
   errors:
     format: "%{attribute} %{message}"
     messages:
+      carrierwave_processing_error: 處理錯誤
+      carrierwave_integrity_error: 文件類型錯誤
+      carrierwave_download_error: 下載錯誤
+      extension_whitelist_error: "不可上傳 %{extension} 文件, 可上傳文件類型為: %{allowed_types}"
+      extension_blacklist_error: "不可上傳 %{extension} 文件, 不可上傳文件類型為: %{prohibited_types}"
+      content_type_whitelist_error: "不可上傳 %{content_type} 文件"
+      content_type_blacklist_error: "不可上傳 %{content_type} 文件"
+      rmagick_processing_error: "rmagick 錯誤, 也許上傳的的文件不是圖片? 原錯誤: %{e}"
+      mini_magick_processing_error: "MiniMagick 錯誤, 也許上傳的文件不是圖片? 原錯誤: %{e}"
+      min_size_error: "文件大小應大於 %{min_size}"
+      max_size_error: "文件大小應小於 %{max_size}"
       accepted: 必須是可被接受的
       blank: 不能為空白
       confirmation: 與 %{attribute} 須一致
