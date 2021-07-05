@@ -8,7 +8,7 @@ class FileUploader < CarrierWave::Uploader::Base
   storage :fog
 
   def size_range
-    1.byte..8.megabytes
+    1.byte..6.megabytes
   end
 
   # Override the directory where uploaded files will be stored.
