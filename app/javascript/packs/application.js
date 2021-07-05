@@ -15,6 +15,7 @@ ActiveStorage.start()
 import "styles"
 import "missions"
 import "groups"
+import "users"
 
 // bootstrap
 import "bootstrap"

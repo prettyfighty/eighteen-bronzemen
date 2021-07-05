@@ -120,6 +120,9 @@ en:
   successfully_deleted_mission: Deleted Mission from Group Successfully
   upload_file: Select the file you want to upload：（Size Limit：6 MB）
   attachment: Attachment
+  avatar: Avatar
+  manage_account: Manage Account
+  group_leader: Group Leader
 
 
 

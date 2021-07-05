@@ -13,6 +13,8 @@ class User < ApplicationRecord
   before_create :encrypt_password
   before_update :encrypt_password
 
+  mount_uploader :avatar, AvatarUploader
+
   def self.login(params)
     email = params[:email]
     password = params[:password]

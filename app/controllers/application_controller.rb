@@ -13,15 +13,15 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    User.find_by(id: session[ENV['session_name']])
+    User.find_by(id: session[ENV["session_name"]])
   end
 
   def user_signed_in?
-		session[ENV['session_name']]
+		session[ENV["session_name"]]
 	end
 
   def authenticate_user!
-    redirect_to sign_in_sessions_path, notice: t("authenticate_user") if session[ENV['session_name']] == nil
+    redirect_to sign_in_sessions_path, notice: t("authenticate_user") if session[ENV["session_name"]] == nil
   end
 
   def admin?
