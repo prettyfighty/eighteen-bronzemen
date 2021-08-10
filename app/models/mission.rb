@@ -18,19 +18,20 @@ class Mission < ApplicationRecord
 
   mount_uploader :file, FileUploader
 
+  # 可以用 Mission.tagge_with(tagname) 來找到文章
   def self.tagged_with(name)
     Tag.find_by!(name: name).missions
   end
 
-  def tag_list
-    tags.map(&:name).join(', ')
-  end
+  # def tag_list
+  #   tags.map(&:name).join(', ')
+  # end
 
-  def tag_list=(names)
-    self.tags = names.split(',').map do |item|
-      Tag.where(name: item.strip).first_or_create!
-    end
-  end
+  # def tag_list=(names)
+  #   self.tags = names.split(',').map do |item|
+  #     Tag.where(name: item.strip).first_or_create!
+  #   end
+  # end
 
   # 用select2 改以陣列顯示
   def tag_items

@@ -1,7 +1,7 @@
 class MissionsController < ApplicationController
 
-  before_action :find_mission, only: [:edit, :update, :share_mission]
   before_action :authenticate_user!
+  before_action :find_mission, only: [:edit, :update, :share_mission]
   after_action :clean_cookies, only: [:index]
 
   def index
@@ -77,7 +77,7 @@ class MissionsController < ApplicationController
   end
 
   def leave_mission
-    mission = Mission.find(params[:id])
+    mission = Mission.find_by(id: params[:id])
     if mission && current_user.shared_missions.exists?(mission.id)
       current_user.shared_missions.destroy(mission)
       redirect_to missions_path, notice: t("successfully_leaved_mission")

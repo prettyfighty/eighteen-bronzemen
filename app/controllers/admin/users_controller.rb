@@ -1,4 +1,4 @@
-class Admin::UsersController < ApplicationController
+class Admin::UsersController < Admin::BaseController
   http_basic_authenticate_with name: ENV["basic_authenticate_name"], password: ENV["basic_authenticate_password"]
 
   before_action :find_user, only: [:show, :edit, :update, :destroy]
@@ -55,6 +55,8 @@ class Admin::UsersController < ApplicationController
 
   def find_user
     @user = User.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to root_path, notice: t("user_not_found")
   end
 
   def check_role!

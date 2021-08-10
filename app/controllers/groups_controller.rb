@@ -51,7 +51,7 @@ class GroupsController < ApplicationController
   end
 
   def join_group
-    group = Group.public_group.find(params[:id])
+    group = Group.public_group.find_by(id: params[:id])
     if group
       if current_user.joined_groups.exists?(group.id)
         redirect_to groups_path, notice: t("already_joined_group")
@@ -80,7 +80,7 @@ class GroupsController < ApplicationController
   end
 
   def leave_group
-    group = Group.find(params[:id])
+    group = Group.find_by(id: params[:id])
     if group && current_user.joined_groups.exists?(group.id)
       current_user.joined_groups.destroy(group)
       redirect_to my_group_groups_path, notice: t("successfully_leaved_group")
